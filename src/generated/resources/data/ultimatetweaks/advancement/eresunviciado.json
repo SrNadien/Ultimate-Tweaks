@@ -1,0 +1,33 @@
+{
+  "parent": "ultimatetweaks:install_mod",
+  "criteria": {
+    "has_galactic_star": {
+      "conditions": {
+        "items": [
+          {
+            "items": "ultimatetweaks:galactic_star"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.ultimatetweaks.eresunviciado.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "id": "ultimatetweaks:galactic_star"
+    },
+    "title": {
+      "translate": "advancements.ultimatetweaks.eresunviciado.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_galactic_star"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

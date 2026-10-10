@@ -1,0 +1,25 @@
+{
+  "criteria": {
+    "tick": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "display": {
+    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+    "description": {
+      "translate": "advancements.ultimatetweaks.install_mod.description"
+    },
+    "icon": {
+      "id": "ultimatetweaks:galactic_star"
+    },
+    "title": {
+      "translate": "advancements.ultimatetweaks.install_mod.title"
+    }
+  },
+  "requirements": [
+    [
+      "tick"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
