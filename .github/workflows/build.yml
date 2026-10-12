@@ -73,6 +73,7 @@ jobs:
           CURSEFORGE_ARMOURY_SLUG: ${{ vars.CURSEFORGE_ARMOURY_SLUG || 'ultimate-armoury-tools-and-weapons' }}
         run: |
           set -euo pipefail
+          if [[ ! "$CURSEFORGE_ARMOURY_SLUG" =~ [a-z] ]]; then CURSEFORGE_ARMOURY_SLUG="ultimate-armoury-tools-and-weapons"; fi
           if [ -z "$CURSEFORGE_TOKEN" ]; then echo "::error::Falta el secret CURSEFORGE_TOKEN en el repositorio"; exit 1; fi
           if [ -z "$CURSEFORGE_PROJECT_ID" ]; then echo "::error::Falta la variable CURSEFORGE_PROJECT_ID en el repositorio"; exit 1; fi
           MC="1.21.1"
