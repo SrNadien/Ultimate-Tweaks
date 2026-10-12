@@ -18,6 +18,10 @@ Optional: JEI, Jade.
 * `Neo/1.21.1` — Minecraft 1.21.1
 * `Neo/26.1.2` — Minecraft 26.1.2
 
+## Documentation
+
+* [Discord Rich Presence](docs/Discord-Presence.md)
+
 ## The Ultimate family
 
 | Mod | Repository |
