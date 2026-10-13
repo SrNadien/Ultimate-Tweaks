@@ -1,5 +1,8 @@
 {
   "itemGroup.ultimatetweaks": "Ultimate Tweaks",
+  "container.ultimatetweaks.trash_can": "Papelera",
+  "container.ultimatetweaks.trash_can.clear": "Vaciar",
+  "sidebar_button.ultimatetweaks.trash_can": "Papelera",
   "item.ultimatetweaks.galactic_star": "Estrella Galáctica",
   "item.ultimatetweaks.patricio": "Patricio",
   "item.ultimatetweaks.bob_esponja": "Bob Esponja",

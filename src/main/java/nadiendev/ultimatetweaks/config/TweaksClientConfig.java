@@ -13,6 +13,7 @@ public class TweaksClientConfig {
 
     public static final ModConfigSpec SPEC;
 
+    public static final ModConfigSpec.BooleanValue TRASH_CAN_BUTTON;
     public static final ModConfigSpec.BooleanValue DISCORD_ENABLED;
     public static final ModConfigSpec.ConfigValue<String> DISCORD_APPLICATION_ID;
     public static final ModConfigSpec.ConfigValue<String> DISCORD_SOURCE;
@@ -37,6 +38,12 @@ public class TweaksClientConfig {
 
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
+
+        TRASH_CAN_BUTTON = builder
+                .comment("Boton de la papelera en la esquina de los inventarios.",
+                         "Solo se usa si FTB Library no esta instalado: con FTB Library el boton va en su barra lateral.",
+                         "Si otro mod ya aporta una papelera, este boton no se muestra.")
+                .define("trashCanButton", true);
 
         builder.comment("Discord Rich Presence.",
                         "Variables en los textos: {pack} {version} {author} {mods} {status} {dimension} {minecraft}.")

@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.0.12] — 2026-10-12 — Minecraft 1.21.1
+
+### ✨ Added
+- A trash can. Open it with the button next to the inventory or with `/ultimatetweaks trashcan`: it is a 4-row container and everything left inside is destroyed when it is closed. A **Clear** button in its window empties it without closing it.
+- The button goes into the FTB Library sidebar when FTB Library is installed. Otherwise it is drawn in the top-left corner of the inventory screens; the `trashCanButton` option of `ultimatetweaks-client.toml` turns that one off. When another mod already provides a trash can button, this one is not added.
+
 ## [2.0.11] — 2026-10-12 — Minecraft 1.21.1
 
 ### ✨ Added
