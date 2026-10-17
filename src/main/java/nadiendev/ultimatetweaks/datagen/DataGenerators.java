@@ -4,6 +4,7 @@ import nadiendev.ultimatetweaks.UltimateTweaksCore;
 import nadiendev.ultimatetweaks.datagen.providers.ItemsModelProvider;
 import nadiendev.ultimatetweaks.datagen.providers.ModAdvancementProvider;
 import nadiendev.ultimatetweaks.datagen.providers.ModJukeboxSongProvider;
+import nadiendev.ultimatetweaks.datagen.providers.ModLangProvider;
 import nadiendev.ultimatetweaks.datagen.providers.ModRecipeProvider;
 import nadiendev.ultimatetweaks.datagen.providers.ModSoundProvider;
 import net.minecraft.core.HolderLookup;
@@ -17,6 +18,8 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class DataGenerators {
+
+    private static final List<String> LANGUAGES = List.of("en_us", "es_es", "es_ar", "es_mx");
 
     private DataGenerators() {
     }
@@ -37,6 +40,9 @@ public class DataGenerators {
 
         generator.addProvider(event.includeClient(), new ItemsModelProvider(output, existingFileHelper));
         generator.addProvider(event.includeClient(), new ModSoundProvider(output, existingFileHelper));
+        for (String locale : LANGUAGES) {
+            generator.addProvider(event.includeClient(), new ModLangProvider(output, locale));
+        }
 
         UltimateTweaksCore.LOGGER.info("=== TODOS LOS PROVIDERS REGISTRADOS CORRECTAMENTE ===");
     }

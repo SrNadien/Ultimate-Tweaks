@@ -21,6 +21,7 @@ Optional: JEI, Jade.
 ## Documentation
 
 * [Discord Rich Presence](docs/Discord-Presence.md)
+* [Transformation](docs/Transformation.md)
 
 ## The Ultimate family
 
