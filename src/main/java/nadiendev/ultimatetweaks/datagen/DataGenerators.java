@@ -3,6 +3,7 @@ package nadiendev.ultimatetweaks.datagen;
 import nadiendev.ultimatetweaks.UltimateTweaksCore;
 import nadiendev.ultimatetweaks.datagen.providers.ModAdvancementProvider;
 import nadiendev.ultimatetweaks.datagen.providers.ModJukeboxSongProvider;
+import nadiendev.ultimatetweaks.datagen.providers.ModLangProvider;
 import nadiendev.ultimatetweaks.datagen.providers.ModRecipeProvider;
 import nadiendev.ultimatetweaks.datagen.providers.ModSoundProvider;
 import net.minecraft.data.advancements.AdvancementProvider;
@@ -12,11 +13,16 @@ import java.util.List;
 
 public class DataGenerators {
 
+    private static final List<String> LANGUAGES = List.of("en_us", "es_es", "es_ar", "es_mx");
+
     private DataGenerators() {
     }
 
     public static void gatherClientData(GatherDataEvent.Client event) {
         event.createProvider(ModSoundProvider::new);
+        for (String locale : LANGUAGES) {
+            event.createProvider(output -> new ModLangProvider(output, locale));
+        }
     }
 
     public static void gatherServerData(GatherDataEvent.Server event) {

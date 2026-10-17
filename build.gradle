@@ -108,6 +108,11 @@ repositories {
         url "https://maven.tterrag.com/"
     }
     maven { url "https://maven.shedaniel.me" }
+    maven { url 'https://maven.architectury.dev/' }
+    maven {
+        name = 'KubeJS'
+        url = 'https://maven.latvian.dev/releases'
+    }
     maven {
         name = 'AppleSkin'
         url = "https://maven.ryanliptak.com/"
@@ -116,12 +121,34 @@ repositories {
 
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
+
     
     
-    //jei
+    //visores de recetas: JEI y REI se compilan, en runtime solo entra el elegido con recipe_viewer (jei, rei o none); EMI no existe para 26.1.2
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
-    runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+    compileOnly("me.shedaniel:RoughlyEnoughItems-api-neoforge:${rei_version}") { transitive = false }
+    compileOnly("me.shedaniel:RoughlyEnoughItems-default-plugin-neoforge:${rei_version}") { transitive = false }
+    compileOnly("me.shedaniel.cloth:basic-math:0.6.1") { transitive = false }
+    compileOnly("dev.architectury:architectury-neoforge:${architectury_version}") { transitive = false }
+
+    switch (recipe_viewer) {
+        case 'jei':
+            runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+            break
+        case 'rei':
+            runtimeOnly("me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}") { transitive = false }
+            runtimeOnly("me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}") { transitive = false }
+            runtimeOnly("dev.architectury:architectury-neoforge:${architectury_version}") { transitive = false }
+            break
+        case 'none':
+            break
+        default:
+            throw new GradleException("recipe_viewer debe ser jei, rei o none (es '${recipe_viewer}')")
+    }
+
+    compileOnly "dev.latvian.mods:kubejs-neoforge:${kubejs_version}"
+    compileOnly "dev.latvian.mods:rhino:${rhino_version}"
 
     //jade
     implementation "maven.modrinth:jade:${jade_version}"
@@ -153,6 +180,7 @@ tasks.withType(ProcessResources).configureEach {
         mod_description: mod_description,
         jade_version: jade_version,
         jei_version: jei_version,
+        kubejs_version_range: kubejs_version_range,
     ]
     
     inputs.properties replaceProperties

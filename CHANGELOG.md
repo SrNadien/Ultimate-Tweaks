@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.0.13] — 2026-10-16 — Minecraft 26.1.2
+
+### ✨ Added
+- **Transformation**, in-world recipes for KubeJS (only active when KubeJS is installed): an item in a fluid becomes other items, a fluid becomes another fluid when catalysts fall into it, an item that burns, an item that is hit by an explosion and a block that explodes can all turn into the items you choose. See `docs/Transformation.md`.
+- Transformation recipes show up in JEI and REI, one category per type. Lava, flint and steel, fire charge and TNT open the categories where they are used.
+
+### ⚔️ Changed
+- The translations are generated with datagen. Argentine and Mexican Spanish (`es_ar` and `es_mx`) are now included, so their text no longer falls back to English.
+
 ## [2.0.12] — 2026-10-12 — Minecraft 26.1.2
 
 ### ✨ Added

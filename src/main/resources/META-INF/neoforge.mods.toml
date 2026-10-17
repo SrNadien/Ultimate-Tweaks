@@ -45,3 +45,17 @@ type = "required"
 versionRange = "[0,)"
 ordering = "AFTER"
 side = "BOTH"
+
+[[dependencies.${mod_id}]]
+modId = "kubejs"
+type = "optional"
+versionRange = "${kubejs_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${mod_id}]]
+modId = "roughlyenoughitems"
+type = "optional"
+versionRange = "[0,)"
+ordering = "NONE"
+side = "BOTH"

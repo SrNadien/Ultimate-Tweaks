@@ -2,6 +2,7 @@ package nadiendev.ultimatetweaks;
 
 import com.mojang.logging.LogUtils;
 import nadiendev.ultimatetweaks.datagen.DataGenerators;
+import nadiendev.ultimatetweaks.transformation.Transformations;
 
 import nadiendev.ultimatetweaks.registry.CreativeTab;
 import nadiendev.ultimatetweaks.registry.ItemsAdds;
@@ -27,6 +28,7 @@ public class UltimateTweaksCore {
         ItemsAdds.register(modEventBus);
 
         CreativeTab.register(modEventBus);
+        Transformations.register(modEventBus);
 
         modEventBus.addListener(DataGenerators::gatherClientData);
         modEventBus.addListener(DataGenerators::gatherServerData);
