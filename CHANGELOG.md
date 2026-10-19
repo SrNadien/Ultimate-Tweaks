@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.0.14] — 2026-10-19 — Minecraft 1.21.1
+
+### 🐛 Fixed
+- Thaumaturge on servers: the Thaumonomicon knowledge is sent again to the player when they join, respawn or change dimension (once right away and once more after the world has finished loading), so the client no longer shows an empty Thaumonomicon after re-entering the server.
+- Thaumaturge on servers: player data is now saved to disk every minute by default, so knowledge is not lost if the server is stopped abruptly. Both options are in the new `thaumaturge` section of `ultimatetweaks-common.toml` (`enabled`, `resyncDelayTicks`, `saveIntervalTicks`) and do nothing without Thaumaturge.
+
 ## [2.0.13] — 2026-10-16 — Minecraft 1.21.1
 
 ### ✨ Added

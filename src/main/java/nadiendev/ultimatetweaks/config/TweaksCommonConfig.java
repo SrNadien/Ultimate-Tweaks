@@ -24,6 +24,10 @@ public class TweaksCommonConfig {
 
     private static final Map<String, StructureValues> ASTRAL_STRUCTURES = new LinkedHashMap<>();
 
+    private static final ModConfigSpec.BooleanValue THAUMATURGE_GUARD;
+    private static final ModConfigSpec.IntValue THAUMATURGE_RESYNC_DELAY;
+    private static final ModConfigSpec.IntValue THAUMATURGE_SAVE_INTERVAL;
+
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
 
@@ -59,12 +63,42 @@ public class TweaksCommonConfig {
 
         builder.pop();
 
+        builder.comment("Proteccion de los conocimientos del Thaumonomicon de Thaumaturge en servidores.",
+                        "Hace falta Thaumaturge; sin el, esta seccion no hace nada.")
+               .push("thaumaturge");
+
+        THAUMATURGE_GUARD = builder
+                .comment("true reenvia los conocimientos al cliente al entrar, reaparecer y cambiar de dimension.")
+                .define("enabled", true);
+        THAUMATURGE_RESYNC_DELAY = builder
+                .comment("Ticks que se esperan tras entrar para volver a enviar los conocimientos, cuando el cliente",
+                         "ya ha terminado de cargar el mundo.")
+                .defineInRange("resyncDelayTicks", 40, 1, 1200);
+        THAUMATURGE_SAVE_INTERVAL = builder
+                .comment("Cada cuantos ticks se guardan en disco los datos de todos los jugadores, para no perder",
+                         "conocimientos si el servidor se cierra de golpe. 0 lo desactiva y deja solo el guardado de Minecraft.")
+                .defineInRange("saveIntervalTicks", 1200, 0, 72000);
+
+        builder.pop();
+
         SPEC = builder.build();
     }
 
     public static AstralStructureOverrides.Settings astralStructure(String name) {
         StructureValues values = ASTRAL_STRUCTURES.get(name);
         return values == null ? AstralStructureOverrides.Settings.DEFAULT : values.read();
+    }
+
+    public static boolean thaumaturgeGuardEnabled() {
+        return THAUMATURGE_GUARD.get();
+    }
+
+    public static int thaumaturgeResyncDelayTicks() {
+        return THAUMATURGE_RESYNC_DELAY.get();
+    }
+
+    public static int thaumaturgeSaveIntervalTicks() {
+        return THAUMATURGE_SAVE_INTERVAL.get();
     }
 
     private TweaksCommonConfig() {
