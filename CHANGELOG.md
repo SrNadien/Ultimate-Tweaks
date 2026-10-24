@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.0.15] — 2026-10-24 — Minecraft 1.21.1
+
+### ✨ Added
+- **Zone flags for FTB Chunks**, in the style of WorldGuard and ProtectionStones, with the same names: 72 settings in the team properties of every team with claimed chunks, covering protection (block break and place, interact, chests, doors and levers, PvP, riding, sleeping, vehicles...), mobs and explosions (mob spawning, denied spawns, creeper, TNT, ghast, wither, wind charge explosions, endermen, ravagers...), lightning, crop growth, entry and exit, entry and exit messages and titles, ender pearls and chorus fruit, respawn location, invincibility, fall damage, hunger and regeneration, timed healing and feeding, game mode, time and weather lock, item pickup and drop, chat, blocked and allowed commands and potion splashes. Like ProtectionStones, PvP and creeper explosions start disabled and entering or leaving shows a message, and only the flags ProtectionStones enables by default (PvP, entry, entry and exit messages in Spanish, creeper explosions, mob spawning and use) exist in the game until the rest are added to `enabledFlags` in `ultimatetweaks-common.toml`. By default they only apply to the chunks of server teams (admin zones); `ultimatetweaks-common.toml` can extend them to players and parties, change the blocked spawn types and set the permission level that skips them. See `docs/FTBChunks-Flags.md`.
+- **FTB Chunks minimap boost**, client side. The minimap no longer uploads textures to the GPU again when their content has not changed, which can give more FPS and fewer stutters. It can be turned off with `ftbChunksMinimapBoost` in `ultimatetweaks-client.toml`.
+
+### 🐛 Fixed
+- FTB Teams on offline-mode servers (`online-mode=false`): teams, parties and invitations work again. FTB Teams looked the player up with the UUID of their account, which does not match the one the server gives in offline mode. Install the mod on the client of every offline player. It can be turned off with `ftbTeamsOfflineFix` in `ultimatetweaks-client.toml`. See `docs/FTB-Teams-Offline.md`.
+
 ## [2.0.14] — 2026-10-19 — Minecraft 1.21.1
 
 ### 🐛 Fixed

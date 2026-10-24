@@ -100,6 +100,13 @@ repositories {
         name 'tterrag maven'
         url "https://maven.tterrag.com/"
     }
+    maven {
+        name = "FTB"
+        url = "https://maven.ftb.dev/releases"
+        content {
+            includeGroup "dev.ftb.mods"
+        }
+    }
     maven { url "https://maven.shedaniel.me" }
     maven { url 'https://maven.architectury.dev/' }
     maven {
@@ -121,6 +128,9 @@ dependencies {
     compileOnly("me.shedaniel:RoughlyEnoughItems-default-plugin-neoforge:${rei_version}") { transitive = false }
     compileOnly("me.shedaniel.cloth:basic-math:0.6.1") { transitive = false }
     compileOnly("dev.architectury:architectury-neoforge:13.0.8") { transitive = false }
+    compileOnly("dev.ftb.mods:ftb-library-neoforge:${ftb_library_version}") { transitive = false }
+    compileOnly("dev.ftb.mods:ftb-teams-neoforge:${ftb_teams_version}") { transitive = false }
+    compileOnly("dev.ftb.mods:ftb-chunks-neoforge:${ftb_chunks_version}") { transitive = false }
 
     switch (recipe_viewer) {
         case 'jei':

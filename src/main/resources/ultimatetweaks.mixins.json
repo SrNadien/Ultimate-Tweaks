@@ -1,0 +1,14 @@
+{
+  "required": false,
+  "minVersion": "0.8",
+  "package": "nadiendev.ultimatetweaks.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "FtbTeamsClientManagerMixin",
+    "FtbChunksMinimapUploadMixin",
+    "NativeImageVersionMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 0
+  }
+}

@@ -1,7 +1,0 @@
-{
-  "icon": "ultimatetweaks:textures/gui/trash_can_icon.png",
-  "sort_index": 1000,
-  "click": [
-    "command:/ultimatetweaks trashcan"
-  ]
-}

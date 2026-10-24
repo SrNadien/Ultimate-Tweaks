@@ -1,6 +1,7 @@
 package nadiendev.ultimatetweaks.datagen.providers;
 
 import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.zone.ZoneFlagDef;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
@@ -23,6 +24,8 @@ public class ModLangProvider extends LanguageProvider {
     }
 
     private void english() {
+        zoneFlagTranslations(false);
+        add("ftbteamsconfig.ultimatetweaks", "Zone Flags");
         add("itemGroup.ultimatetweaks", "Ultimate Tweaks");
         add("container.ultimatetweaks.trash_can", "Trash Can");
         add("container.ultimatetweaks.trash_can.clear", "Clear");
@@ -76,6 +79,8 @@ public class ModLangProvider extends LanguageProvider {
     }
 
     private void spanish() {
+        zoneFlagTranslations(true);
+        add("ftbteamsconfig.ultimatetweaks", "Flags de zonas");
         add("itemGroup.ultimatetweaks", "Ultimate Tweaks");
         add("container.ultimatetweaks.trash_can", "Papelera");
         add("container.ultimatetweaks.trash_can.clear", "Vaciar");
@@ -126,5 +131,12 @@ public class ModLangProvider extends LanguageProvider {
         add("advancements.ultimatetweaks.install_mod.description", "Bienvenido a Ultimate Tweaks. Ya es tarde para arrepentirse.");
         add("advancements.ultimatetweaks.eresunviciado.title", "Eres Un Viciado");
         add("advancements.ultimatetweaks.eresunviciado.description", "Conseguiste la Galactic Star. Tienes demasiado tiempo libre.");
+    }
+
+    private void zoneFlagTranslations(boolean spanishText) {
+        for (ZoneFlagDef def : ZoneFlagDef.values()) {
+            add(def.langKey(), def.name(spanishText));
+            add(def.langKey() + ".tooltip", def.tooltip(spanishText));
+        }
     }
 }
