@@ -114,6 +114,13 @@ repositories {
         url = 'https://maven.latvian.dev/releases'
     }
     maven {
+        name = "FTB"
+        url = "https://maven.ftb.dev/releases"
+        content {
+            includeGroup "dev.ftb.mods"
+        }
+    }
+    maven {
         name = 'AppleSkin'
         url = "https://maven.ryanliptak.com/"
     }
@@ -146,6 +153,10 @@ dependencies {
         default:
             throw new GradleException("recipe_viewer debe ser jei, rei o none (es '${recipe_viewer}')")
     }
+
+    compileOnly("dev.ftb.mods:ftb-library-neoforge:${ftb_library_version}") { transitive = false }
+    compileOnly("dev.ftb.mods:ftb-teams-neoforge:${ftb_teams_version}") { transitive = false }
+    compileOnly("dev.ftb.mods:ftb-chunks-neoforge:${ftb_chunks_version}") { transitive = false }
 
     compileOnly "dev.latvian.mods:kubejs-neoforge:${kubejs_version}"
     compileOnly "dev.latvian.mods:rhino:${rhino_version}"

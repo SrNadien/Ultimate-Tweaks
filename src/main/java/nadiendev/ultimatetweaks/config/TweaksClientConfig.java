@@ -14,6 +14,7 @@ public class TweaksClientConfig {
     public static final ModConfigSpec SPEC;
 
     public static final ModConfigSpec.BooleanValue TRASH_CAN_BUTTON;
+    public static final ModConfigSpec.BooleanValue FTB_TEAMS_OFFLINE_FIX;
     public static final ModConfigSpec.BooleanValue DISCORD_ENABLED;
     public static final ModConfigSpec.ConfigValue<String> DISCORD_APPLICATION_ID;
     public static final ModConfigSpec.ConfigValue<String> DISCORD_SOURCE;
@@ -44,6 +45,13 @@ public class TweaksClientConfig {
                          "Solo se usa si FTB Library no esta instalado: con FTB Library el boton va en su barra lateral.",
                          "Si otro mod ya aporta una papelera, este boton no se muestra.")
                 .define("trashCanButton", true);
+
+        FTB_TEAMS_OFFLINE_FIX = builder
+                .comment("Hace que FTB Teams funcione en servidores con online-mode=false (jugadores no premium).",
+                         "FTB Teams busca al jugador con el UUID de su cuenta, que en modo offline no coincide con el que",
+                         "le da el servidor, y entonces los equipos, las partys y las invitaciones no funcionan.",
+                         "Con true usa el UUID que recibe del servidor. Solo hace algo si FTB Teams esta instalado.")
+                .define("ftbTeamsOfflineFix", true);
 
         builder.comment("Discord Rich Presence.",
                         "Variables en los textos: {pack} {version} {author} {mods} {status} {dimension} {minecraft}.")
