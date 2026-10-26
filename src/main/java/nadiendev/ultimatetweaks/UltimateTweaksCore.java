@@ -3,6 +3,7 @@ package nadiendev.ultimatetweaks;
 import com.mojang.logging.LogUtils;
 import nadiendev.ultimatetweaks.datagen.DataGenerators;
 import nadiendev.ultimatetweaks.integration.ftbchunks.FtbChunksIntegration;
+import nadiendev.ultimatetweaks.integration.lootr.LootrIntegration;
 import nadiendev.ultimatetweaks.transformation.Transformations;
 
 import nadiendev.ultimatetweaks.registry.CreativeTab;
@@ -33,6 +34,7 @@ public class UltimateTweaksCore {
         CreativeTab.register(modEventBus);
         Transformations.register(modEventBus);
         FtbChunksIntegration.init();
+        LootrIntegration.init();
 
         modEventBus.addListener(DataGenerators::gatherData);
 
