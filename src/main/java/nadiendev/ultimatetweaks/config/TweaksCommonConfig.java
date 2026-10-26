@@ -23,6 +23,10 @@ public class TweaksCommonConfig {
     private static final ModConfigSpec.BooleanValue QUESTS_ENABLED;
     private static final ModConfigSpec.BooleanValue QUESTS_IGNORE_UNCHANGED;
     private static final ModConfigSpec.BooleanValue QUESTS_CACHE_ITEMS;
+    private static final ModConfigSpec.BooleanValue LOOTR_ENABLED;
+    private static final ModConfigSpec.BooleanValue LOOTR_FORCE_TABLED;
+    private static final ModConfigSpec.IntValue LOOTR_DELAY;
+    private static final ModConfigSpec.BooleanValue LOOTR_LOG;
 
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
@@ -100,6 +104,26 @@ public class TweaksCommonConfig {
 
         builder.pop();
 
+        builder.comment("Integracion con Lootr: los cofres y barriles de las estructuras pasan a ser de Lootr.",
+                        "Incluye las estructuras de datapacks y de KubeJS (kubejs/data), que ponen sus cofres sin que Lootr se entere.",
+                        "Las reglas con tabla de botin propia van en data/<namespace>/ultimatetweaks/lootr_structures/*.json.",
+                        "Hace falta Lootr; sin el, esta seccion no hace nada.")
+               .push("lootr");
+        LOOTR_ENABLED = builder
+                .comment("false desactiva toda la integracion.")
+                .define("enabled", true);
+        LOOTR_FORCE_TABLED = builder
+                .comment("true avisa a Lootr de todos los cofres con tabla de botin de los chunks con estructuras,",
+                         "para que los convierta aunque la estructura los haya puesto sin pasar por su aviso normal.")
+                .define("forceStructureChests", true);
+        LOOTR_DELAY = builder
+                .comment("Ticks que se espera tras cargar un chunk con estructuras antes de convertir sus cofres.")
+                .defineInRange("delayTicks", 20, 1, 1200);
+        LOOTR_LOG = builder
+                .comment("true escribe en el log cada contenedor que se pasa a Lootr, con su posicion y su tabla.")
+                .define("logConversions", true);
+        builder.pop();
+
         SPEC = builder.build();
     }
 
@@ -133,6 +157,22 @@ public class TweaksCommonConfig {
 
     public static boolean questsCacheItems() {
         return questsEnabled() && QUESTS_CACHE_ITEMS.get();
+    }
+
+    public static boolean lootrEnabled() {
+        return LOOTR_ENABLED.get();
+    }
+
+    public static boolean lootrForceTabledChests() {
+        return LOOTR_FORCE_TABLED.get();
+    }
+
+    public static int lootrDelayTicks() {
+        return LOOTR_DELAY.get();
+    }
+
+    public static boolean lootrLogConversions() {
+        return LOOTR_LOG.get();
     }
 
     public static boolean zoneEnabled() {

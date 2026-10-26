@@ -76,3 +76,10 @@ type = "optional"
 versionRange = "[0,)"
 ordering = "NONE"
 side = "BOTH"
+
+[[dependencies.${mod_id}]]
+modId = "lootr"
+type = "optional"
+versionRange = "[0,)"
+ordering = "NONE"
+side = "BOTH"

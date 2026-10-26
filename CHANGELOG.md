@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.0.16] — 2026-10-26 — Minecraft 26.1.2
+
+### 🐛 Fixed
+- Minor internal fixes and improvements.
+
 ## [2.0.15] — 2026-10-26 — Minecraft 26.1.2
 
 ### ✨ Added
