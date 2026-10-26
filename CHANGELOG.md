@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.15] — 2026-10-26 — Minecraft 26.1.2
+
+### ✨ Added
+- **Advancement optimization** (server side). Checking every player's inventory on every change makes the tick rate drop with many mods and players. Now the checks of one player are grouped and run once every few ticks (5 by default); changes that arrive in between are kept, one per item type, and checked all together, so no advancement is lost. Advancements that need several items are also checked with a single pass over the inventory.
+- **FTB Quests optimization** (server side, only active when FTB Quests is installed). Quests are no longer checked again when a slot changes without changing its item or amount (tools with changing energy or durability), and the list of valid items of every item task is kept instead of being calculated each time.
+- Everything can be turned off from the new `optimization` section of `ultimatetweaks-common.toml`. See `docs/Optimizacion.md`.
+
 ## [2.0.14] — 2026-10-25 — Minecraft 26.1.2
 
 ### ✨ Added

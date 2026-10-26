@@ -69,3 +69,10 @@ side = "BOTH"
 
 [[mixins]]
 config = "ultimatetweaks.mixins.json"
+
+[[dependencies.${mod_id}]]
+modId = "ftbquests"
+type = "optional"
+versionRange = "[0,)"
+ordering = "NONE"
+side = "BOTH"
