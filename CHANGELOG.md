@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.0.18] — 2026-10-30 — Minecraft 1.21.1
+
+### 🐛 Fixed
+- Minor internal fixes and improvements.
+
 ## [2.0.17] — 2026-10-26 — Minecraft 1.21.1
 
 ### 🐛 Fixed

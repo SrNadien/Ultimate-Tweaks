@@ -55,7 +55,10 @@ public final class LootrStructureEvents {
     @SubscribeEvent
     public void onChunkLoad(ChunkEvent.Load event) {
         if (!TweaksCommonConfig.lootrEnabled() || !(event.getLevel() instanceof ServerLevel level)
-                || !(event.getChunk() instanceof LevelChunk chunk) || chunk.getAllReferences().isEmpty()) {
+                || !(event.getChunk() instanceof LevelChunk chunk)) {
+            return;
+        }
+        if (chunk.getAllReferences().isEmpty() && !TweaksCommonConfig.lootrScanAllChunks()) {
             return;
         }
         queue.add(new Task(level.getServer().getTickCount() + TweaksCommonConfig.lootrDelayTicks(), level, chunk.getPos()));
@@ -93,10 +96,10 @@ public final class LootrStructureEvents {
         List<StructureStart> starts = level.structureManager().startsForStructure(pos, structure -> true);
         List<BlockEntity> entities = new ArrayList<>(chunk.getBlockEntities().values());
         for (BlockEntity entity : entities) {
-            if (!(entity instanceof RandomizableContainer container) || !isConvertible(entity)) {
+            if (!(entity instanceof RandomizableContainer container) || entity instanceof ILootrBlockEntity) {
                 continue;
             }
-            LootrStructureRules.Rule rule = ruleAt(registry, starts, entity.getBlockPos());
+            LootrStructureRules.Rule rule = isConvertible(entity) ? ruleAt(registry, starts, entity.getBlockPos()) : null;
             if (rule != null && (rule.replaceItems() || container.getLootTable() == null)) {
                 if (container instanceof Clearable clearable) {
                     clearable.clearContent();
@@ -121,8 +124,7 @@ public final class LootrStructureEvents {
     }
 
     private static boolean isConvertible(BlockEntity entity) {
-        return (entity instanceof ChestBlockEntity || entity instanceof BarrelBlockEntity)
-                && !(entity instanceof ILootrBlockEntity);
+        return entity instanceof ChestBlockEntity || entity instanceof BarrelBlockEntity;
     }
 
     @Nullable

@@ -39,6 +39,7 @@ public class TweaksCommonConfig {
     private static final ModConfigSpec.BooleanValue LOOTR_FORCE_TABLED;
     private static final ModConfigSpec.IntValue LOOTR_DELAY;
     private static final ModConfigSpec.BooleanValue LOOTR_LOG;
+    private static final ModConfigSpec.BooleanValue LOOTR_SCAN_ALL;
     private static final ModConfigSpec.BooleanValue ADVANCEMENTS_ENABLED;
     private static final ModConfigSpec.IntValue ADVANCEMENTS_INTERVAL;
     private static final ModConfigSpec.BooleanValue ADVANCEMENTS_IGNORE_EMPTY;
@@ -154,6 +155,10 @@ public class TweaksCommonConfig {
         LOOTR_LOG = builder
                 .comment("true escribe en el log cada contenedor que se pasa a Lootr, con su posicion y su tabla.")
                 .define("logConversions", true);
+        LOOTR_SCAN_ALL = builder
+                .comment("true revisa todos los chunks que se cargan, no solo los de estructuras registradas,",
+                         "para convertir tambien los cofres de features y de estructuras de mods que no se registran como estructura.")
+                .define("scanAllChunks", true);
         builder.pop();
 
         builder.comment("Optimizaciones del servidor para logros y para FTB Quests.",
@@ -245,6 +250,10 @@ public class TweaksCommonConfig {
 
     public static boolean lootrLogConversions() {
         return LOOTR_LOG.get();
+    }
+
+    public static boolean lootrScanAllChunks() {
+        return LOOTR_SCAN_ALL.get();
     }
 
     private static boolean loaded() {

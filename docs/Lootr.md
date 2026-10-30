@@ -34,3 +34,4 @@ Sección `lootr` de `ultimatetweaks-common.toml`:
 | `forceStructureChests` | `true` avisa a Lootr de todos los cofres con tabla de botín de los chunks con estructuras. |
 | `delayTicks` | Ticks que se espera tras cargar el chunk antes de convertir. |
 | `logConversions` | `true` escribe en el log un mensaje por cada contenedor que se pasa a Lootr, con su posición y su tabla de botín. |
+| `scanAllChunks` | `true` revisa todos los chunks que se cargan, no solo los de estructuras registradas, para convertir también los cofres de features y de estructuras de mods que no se registran como estructura. |
