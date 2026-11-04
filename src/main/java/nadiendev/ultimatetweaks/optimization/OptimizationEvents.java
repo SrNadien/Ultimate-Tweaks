@@ -1,6 +1,6 @@
 package nadiendev.ultimatetweaks.optimization;
 
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -8,7 +8,7 @@ import net.neoforged.neoforge.event.TagsUpdatedEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
-@EventBusSubscriber(modid = UltimateTweaksCore.MOD_ID)
+@EventBusSubscriber(modid = UltimateTweaks.MOD_ID)
 public final class OptimizationEvents {
 
     private OptimizationEvents() {

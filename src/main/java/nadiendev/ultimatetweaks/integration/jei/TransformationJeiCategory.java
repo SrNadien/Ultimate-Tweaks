@@ -10,7 +10,7 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.types.IRecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import nadiendev.ultimatetweaks.transformation.view.TransformationKind;
 import nadiendev.ultimatetweaks.transformation.view.TransformationView;
 import net.minecraft.client.Minecraft;
@@ -31,7 +31,7 @@ public class TransformationJeiCategory implements IRecipeCategory<Transformation
 
     public TransformationJeiCategory(IGuiHelper helper, TransformationKind kind) {
         this.kind = kind;
-        this.type = IRecipeType.create(UltimateTweaksCore.MOD_ID, kind.path(), TransformationView.class);
+        this.type = IRecipeType.create(UltimateTweaks.MOD_ID, kind.path(), TransformationView.class);
         this.icon = helper.createDrawableItemStack(kind.icon());
         this.arrow = helper.drawableBuilder(ARROW_TEXTURE, 176, 14, 24, 17).setTextureSize(256, 256).build();
     }

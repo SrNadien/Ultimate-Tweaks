@@ -17,12 +17,12 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import org.slf4j.Logger;
 
-@Mod(UltimateTweaksCore.MOD_ID)
-public class UltimateTweaksCore {
+@Mod(UltimateTweaks.MOD_ID)
+public class UltimateTweaks {
     public static final String MOD_ID = "ultimatetweaks";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public UltimateTweaksCore(IEventBus modEventBus, ModContainer modContainer) {
+    public UltimateTweaks(IEventBus modEventBus, ModContainer modContainer) {
         LOGGER.info("Inicializando Ultimate Tweaks...");
 
         modContainer.registerConfig(ModConfig.Type.CLIENT, TweaksClientConfig.SPEC);

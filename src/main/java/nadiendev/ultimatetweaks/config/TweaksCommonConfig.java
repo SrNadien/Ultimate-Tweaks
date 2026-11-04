@@ -13,6 +13,7 @@ public class TweaksCommonConfig {
 
     private static final ModConfigSpec.BooleanValue ZONE_ENABLED;
     private static final ModConfigSpec.BooleanValue ZONE_ONLY_SERVER_TEAMS;
+    private static final ModConfigSpec.BooleanValue ZONE_MESSAGES_ALL_TEAMS;
     private static final ModConfigSpec.ConfigValue<List<? extends String>> ZONE_SPAWN_TYPES;
     private static final ModConfigSpec.IntValue ZONE_BYPASS_LEVEL;
     private static final ModConfigSpec.ConfigValue<List<? extends String>> ZONE_ENABLED_FLAGS;
@@ -43,8 +44,13 @@ public class TweaksCommonConfig {
                 .define("enabled", true);
         ZONE_ONLY_SERVER_TEAMS = builder
                 .comment("true aplica los flags solo a los chunks de equipos de servidor (zonas de admin).",
-                         "false los aplica tambien a los chunks de jugadores y partys.")
-                .define("onlyServerTeams", true);
+                         "false los aplica tambien a los chunks de jugadores y partys, cada equipo con sus propios valores.")
+                .define("onlyServerTeams", false);
+        ZONE_MESSAGES_ALL_TEAMS = builder
+                .comment("true muestra los mensajes y titulos de entrada y salida (greeting, farewell) en todos los chunks",
+                         "reclamados, tambien los de jugadores y partys, aunque onlyServerTeams sea true.",
+                         "false los muestra solo donde se aplican los flags.")
+                .define("messagesAllTeams", true);
         ZONE_SPAWN_TYPES = builder
                 .comment("Tipos de aparicion que bloquea el flag mob_spawning (nombres de EntitySpawnReason).",
                          "Los spawners, huevos y comandos no se bloquean salvo que los pongas aqui.")
@@ -190,6 +196,10 @@ public class TweaksCommonConfig {
 
     public static boolean zoneOnlyServerTeams() {
         return ZONE_ONLY_SERVER_TEAMS.get();
+    }
+
+    public static boolean zoneMessagesAllTeams() {
+        return ZONE_MESSAGES_ALL_TEAMS.get();
     }
 
     public static List<? extends String> zoneBlockedSpawnTypes() {

@@ -1,6 +1,6 @@
 package nadiendev.ultimatetweaks.client.transformation;
 
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeMap;
 import net.neoforged.api.distmarker.Dist;
@@ -11,7 +11,7 @@ import net.neoforged.neoforge.client.event.RecipesReceivedEvent;
 
 import java.util.Collection;
 
-@EventBusSubscriber(modid = UltimateTweaksCore.MOD_ID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = UltimateTweaks.MOD_ID, value = Dist.CLIENT)
 public final class TransformationClientRecipes {
 
     private static RecipeMap received = RecipeMap.EMPTY;

@@ -2,7 +2,7 @@ package nadiendev.ultimatetweaks.integration.lootr;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.FileToIdConverter;
@@ -76,11 +76,11 @@ public final class LootrStructureRules extends SimpleJsonResourceReloadListener<
             try {
                 loaded.add(build(id, raw));
             } catch (RuntimeException e) {
-                UltimateTweaksCore.LOGGER.error("Regla de Lootr {} invalida: {}", id, e.getMessage());
+                UltimateTweaks.LOGGER.error("Regla de Lootr {} invalida: {}", id, e.getMessage());
             }
         });
         rules = List.copyOf(loaded);
-        UltimateTweaksCore.LOGGER.info("Reglas de Lootr por estructura cargadas: {}", rules.size());
+        UltimateTweaks.LOGGER.info("Reglas de Lootr por estructura cargadas: {}", rules.size());
     }
 
     private static Rule build(Identifier id, Raw raw) {

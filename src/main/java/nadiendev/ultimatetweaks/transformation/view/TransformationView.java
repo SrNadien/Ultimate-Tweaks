@@ -1,6 +1,6 @@
 package nadiendev.ultimatetweaks.transformation.view;
 
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import nadiendev.ultimatetweaks.transformation.TransformationRecipes;
 import nadiendev.ultimatetweaks.transformation.Transformations;
 import nadiendev.ultimatetweaks.transformation.recipe.BlockExplosionRecipe;
@@ -139,7 +139,7 @@ public record TransformationView(TransformationKind kind, Identifier id, List<Li
     }
 
     private static String noteKey(String name) {
-        return "view." + UltimateTweaksCore.MOD_ID + ".transformation." + name;
+        return "view." + UltimateTweaks.MOD_ID + ".transformation." + name;
     }
 
     private static Component note(String name) {

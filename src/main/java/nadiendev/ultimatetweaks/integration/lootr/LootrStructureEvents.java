@@ -1,6 +1,6 @@
 package nadiendev.ultimatetweaks.integration.lootr;
 
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import nadiendev.ultimatetweaks.config.TweaksCommonConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
@@ -48,7 +48,7 @@ public final class LootrStructureEvents {
 
     @SubscribeEvent
     public void onReloadListeners(AddServerReloadListenersEvent event) {
-        event.addListener(Identifier.fromNamespaceAndPath(UltimateTweaksCore.MOD_ID, "lootr_structures"), new LootrStructureRules());
+        event.addListener(Identifier.fromNamespaceAndPath(UltimateTweaks.MOD_ID, "lootr_structures"), new LootrStructureRules());
     }
 
     @SubscribeEvent
@@ -71,7 +71,7 @@ public final class LootrStructureEvents {
             try {
                 process(task.level(), task.pos());
             } catch (RuntimeException e) {
-                UltimateTweaksCore.LOGGER.error("Lootr: error en el chunk {}: {}", task.pos(), e.toString());
+                UltimateTweaks.LOGGER.error("Lootr: error en el chunk {}: {}", task.pos(), e.toString());
             }
         }
     }
@@ -115,7 +115,7 @@ public final class LootrStructureEvents {
 
     private static void report(ServerLevel level, BlockEntity entity, String detail) {
         if (TweaksCommonConfig.lootrLogConversions()) {
-            UltimateTweaksCore.LOGGER.info("Lootr: {} en {} ({}) pasa a ser de Lootr {}",
+            UltimateTweaks.LOGGER.info("Lootr: {} en {} ({}) pasa a ser de Lootr {}",
                     BuiltInRegistries.BLOCK.getKey(entity.getBlockState().getBlock()),
                     entity.getBlockPos().toShortString(), level.dimension().identifier(), detail);
         }

@@ -1,6 +1,6 @@
 package nadiendev.ultimatetweaks.registry;
 
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.neoforged.bus.api.IEventBus;
@@ -11,7 +11,7 @@ import java.util.function.Supplier;
 
 public class ItemsAdds {
     public static final DeferredRegister.Items ITEMS =
-            DeferredRegister.createItems(UltimateTweaksCore.MOD_ID);
+            DeferredRegister.createItems(UltimateTweaks.MOD_ID);
 
     public static final DeferredHolder<Item, Item> GALACTIC_STAR = reg(
         "galactic_star",

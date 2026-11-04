@@ -1,6 +1,6 @@
 package nadiendev.ultimatetweaks.datagen;
 
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import nadiendev.ultimatetweaks.datagen.providers.ModAdvancementProvider;
 import nadiendev.ultimatetweaks.datagen.providers.ModJukeboxSongProvider;
 import nadiendev.ultimatetweaks.datagen.providers.ModLangProvider;
@@ -26,13 +26,13 @@ public class DataGenerators {
     }
 
     public static void gatherServerData(GatherDataEvent.Server event) {
-        UltimateTweaksCore.LOGGER.info("=== INICIANDO GENERACION DE DATOS ===");
+        UltimateTweaks.LOGGER.info("=== INICIANDO GENERACION DE DATOS ===");
 
         event.createProvider(ModRecipeProvider.Runner::new);
         event.createProvider((output, lookupProvider) ->
                 new AdvancementProvider(output, lookupProvider, List.of(new ModAdvancementProvider())));
         event.createProvider(ModJukeboxSongProvider::new);
 
-        UltimateTweaksCore.LOGGER.info("=== TODOS LOS PROVIDERS REGISTRADOS CORRECTAMENTE ===");
+        UltimateTweaks.LOGGER.info("=== TODOS LOS PROVIDERS REGISTRADOS CORRECTAMENTE ===");
     }
 }

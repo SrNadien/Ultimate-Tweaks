@@ -1,6 +1,6 @@
 package nadiendev.ultimatetweaks.integration.lootr;
 
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ChunkPos;
@@ -29,7 +29,7 @@ public final class LootrBridge {
             isValid = ticker.getMethod("isValidEntityFull", BlockEntity.class);
             add = ticker.getMethod("addEntity", BlockEntity.class, Level.class, ChunkPos.class);
         } catch (ReflectiveOperationException e) {
-            UltimateTweaksCore.LOGGER.warn("Lootr: no se encontro el aviso de conversion, solo se usaran las reglas por estructura: {}",
+            UltimateTweaks.LOGGER.warn("Lootr: no se encontro el aviso de conversion, solo se usaran las reglas por estructura: {}",
                     e.toString());
         }
     }
@@ -50,7 +50,7 @@ public final class LootrBridge {
             add.invoke(null, entity, level, pos);
             return true;
         } catch (ReflectiveOperationException e) {
-            UltimateTweaksCore.LOGGER.warn("Lootr: no se pudo avisar de un contenedor: {}", e.toString());
+            UltimateTweaks.LOGGER.warn("Lootr: no se pudo avisar de un contenedor: {}", e.toString());
             return false;
         }
     }

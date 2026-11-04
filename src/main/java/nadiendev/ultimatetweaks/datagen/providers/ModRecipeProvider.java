@@ -1,6 +1,6 @@
 package nadiendev.ultimatetweaks.datagen.providers;
 
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -23,7 +23,7 @@ public class ModRecipeProvider extends RecipeProvider {
 
         @Override
         public String getName() {
-            return "Recipes: " + UltimateTweaksCore.MOD_ID;
+            return "Recipes: " + UltimateTweaks.MOD_ID;
         }
 
         @Override

@@ -1,6 +1,6 @@
 package nadiendev.ultimatetweaks.transformation;
 
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import nadiendev.ultimatetweaks.transformation.recipe.BlockExplosionRecipe;
 import nadiendev.ultimatetweaks.transformation.recipe.BurningRecipe;
 import nadiendev.ultimatetweaks.transformation.recipe.FluidToFluidRecipe;
@@ -33,12 +33,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-@EventBusSubscriber(modid = UltimateTweaksCore.MOD_ID)
+@EventBusSubscriber(modid = UltimateTweaks.MOD_ID)
 public final class TransformationEvents {
 
     private static final int FLUID_INTERVAL = 5;
-    private static final String RECIPE_KEY = UltimateTweaksCore.MOD_ID + "_transformation_recipe";
-    private static final String TICKS_KEY = UltimateTweaksCore.MOD_ID + "_transformation_ticks";
+    private static final String RECIPE_KEY = UltimateTweaks.MOD_ID + "_transformation_recipe";
+    private static final String TICKS_KEY = UltimateTweaks.MOD_ID + "_transformation_ticks";
 
     private TransformationEvents() {
     }

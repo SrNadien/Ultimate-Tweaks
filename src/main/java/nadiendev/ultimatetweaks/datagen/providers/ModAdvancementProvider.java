@@ -1,6 +1,6 @@
 package nadiendev.ultimatetweaks.datagen.providers;
 
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import nadiendev.ultimatetweaks.registry.ItemsAdds;
 
 import net.minecraft.advancements.Advancement;
@@ -31,7 +31,7 @@ public class ModAdvancementProvider implements AdvancementSubProvider {
                         true, true, false
                 )
                 .addCriterion("tick", PlayerTrigger.TriggerInstance.tick())
-                .save(saver, Identifier.fromNamespaceAndPath(UltimateTweaksCore.MOD_ID, "install_mod").toString());
+                .save(saver, Identifier.fromNamespaceAndPath(UltimateTweaks.MOD_ID, "install_mod").toString());
 
         Advancement.Builder.advancement()
                 .parent(installMod)
@@ -43,7 +43,7 @@ public class ModAdvancementProvider implements AdvancementSubProvider {
                 )
                 .addCriterion("has_galactic_star",
                         InventoryChangeTrigger.TriggerInstance.hasItems(ItemsAdds.GALACTIC_STAR.get()))
-                .save(saver, Identifier.fromNamespaceAndPath(UltimateTweaksCore.MOD_ID, "eresunviciado").toString());
+                .save(saver, Identifier.fromNamespaceAndPath(UltimateTweaks.MOD_ID, "eresunviciado").toString());
 
     }
 }
