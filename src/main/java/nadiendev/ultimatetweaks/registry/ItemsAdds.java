@@ -1,6 +1,6 @@
 package nadiendev.ultimatetweaks.registry;
 
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -15,7 +15,7 @@ import java.util.function.Supplier;
 
 public class ItemsAdds {
     public static final DeferredRegister<Item> ITEMS =
-            DeferredRegister.create(BuiltInRegistries.ITEM, UltimateTweaksCore.MOD_ID);
+            DeferredRegister.create(BuiltInRegistries.ITEM, UltimateTweaks.MOD_ID);
 
     public static final DeferredHolder<Item, Item> GALACTIC_STAR = ITEMS.register(
         "galactic_star",

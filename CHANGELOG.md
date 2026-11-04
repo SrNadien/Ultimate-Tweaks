@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.0.19] — 2026-11-04 — Minecraft 1.21.1
+
+### ✨ Added
+- **Single row of colored hearts** (client side). With more than 20 maximum health, the health bar no longer stacks rows of hearts on top of each other: it shows one row, and each layer of 20 health has its own color (red, dark red, yellow, light green, green, teal, purple and magenta, then it starts over). Colors, threshold and on/off are in the new `hearts` section of `ultimatetweaks-client.toml`. Poison, wither, freezing and hardcore keep the vanilla bar.
+- **Zone entry and exit titles.** `greeting_title` and `farewell_title` now appear in the team settings next to `greeting` and `farewell`, with a default two-line text (`Entrando al rancho de` and the owner's name below). New `{owner}` variable for the owner's name, next to `{team}`.
+- Entry and exit titles and messages are shown in every claimed chunk, also for players' and parties' claims (`messagesAllTeams` in the `zoneFlags` section of `ultimatetweaks-common.toml`).
+
+### 🔧 Changed
+- Zone flags now apply to all claimed chunks, each team with its own values (`onlyServerTeams` now defaults to `false`; configs that already exist keep their value).
+- The default entry and exit chat messages are now empty, so only the title is shown. Teams that still had the old default text are updated once per world.
+- NeoForge 21.1.262.
+
 ## [2.0.18] — 2026-10-30 — Minecraft 1.21.1
 
 ### 🐛 Fixed

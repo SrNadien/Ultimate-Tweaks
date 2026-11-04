@@ -1,6 +1,6 @@
 package nadiendev.ultimatetweaks.transformation.view;
 
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -35,7 +35,7 @@ public enum TransformationKind {
     }
 
     public ResourceLocation id() {
-        return ResourceLocation.fromNamespaceAndPath(UltimateTweaksCore.MOD_ID, path);
+        return ResourceLocation.fromNamespaceAndPath(UltimateTweaks.MOD_ID, path);
     }
 
     public List<ItemStack> catalystItems() {
@@ -52,6 +52,6 @@ public enum TransformationKind {
     }
 
     public Component title() {
-        return Component.translatable("category." + UltimateTweaksCore.MOD_ID + ".transformation." + path);
+        return Component.translatable("category." + UltimateTweaks.MOD_ID + ".transformation." + path);
     }
 }

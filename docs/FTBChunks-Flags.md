@@ -2,7 +2,7 @@
 
 Ultimate Tweaks añade a FTB Chunks flags por zona, con los mismos nombres y la misma idea que los de WorldGuard y ProtectionStones. Cada equipo con chunks reclamados los tiene entre sus ajustes (botón **Settings** del equipo) y se cambian como cualquier otra propiedad del equipo.
 
-Hace falta **FTB Chunks** (y FTB Teams). Sin ellos no hace nada. Los flags se aplican por defecto a los equipos de servidor, es decir, a las zonas de admin (ver Configuración).
+Hace falta **FTB Chunks** (y FTB Teams). Sin ellos no hace nada. Los flags se aplican a todos los chunks reclamados, y cada equipo (zonas de servidor, jugadores y partys) tiene sus propios valores (ver Configuración).
 
 **Por defecto solo salen en el juego los que ProtectionStones activa de serie**: `pvp`, `greeting`, `farewell`, `entry`, `creeper_explosion`, `mob_spawning` y `use`. El resto no existe hasta que lo añadas a `enabledFlags` en `ultimatetweaks-common.toml` (ver Configuración) y reinicies.
 
@@ -27,7 +27,7 @@ Los flags de lista (`deny_spawn`, `blocked_cmds`, `allowed_cmds`) se editan desd
 - Los valores de partida son los de ProtectionStones: `pvp` y `creeper_explosion` desactivados, `entry` permitido, y mensajes de entrada y salida ("Entrando al rancho de ..." y "Saliendo del rancho de ..."). Cada equipo los puede cambiar después.
 - Los flags de acciones del jugador (`block_break`, `block_place`, `interact`, `chest_access`, `use`, `ride`, `sleep`, `lighter`, `pvp`...) no afectan a los miembros del equipo ni a los jugadores con permisos de operador.
 - Cuando se impide una acción se muestra `deny_message` en la barra de acciones.
-- En los mensajes (`greeting`, `farewell`, `deny_message`...) se pueden usar colores con `&` y `{team}` para el nombre del equipo. En los títulos, `\n` separa el título del subtítulo.
+- En los mensajes (`greeting`, `farewell`, `deny_message`...) se pueden usar colores con `&`, `{team}` para el nombre del equipo y `{owner}` para el nombre del dueño de la protección (en un equipo de servidor, que no tiene dueño, es el nombre del equipo). En los títulos, `\n` separa el título del subtítulo.
 
 ## Los flags
 
@@ -111,7 +111,7 @@ Está en la sección `zoneFlags` de `ultimatetweaks-common.toml`:
 |---|---|
 | `enabled` | `false` desactiva todos los flags. |
 | `enabledFlags` | Lista de flags que existen en el juego. Por defecto `pvp`, `greeting`, `farewell`, `entry`, `creeper_explosion`, `mob_spawning` y `use`. Un flag que no esté en la lista no sale en los ajustes del equipo y no hace nada. |
-| `onlyServerTeams` | `true` (por defecto) aplica los flags solo a los chunks de equipos de servidor. `false` los aplica también a jugadores y partys. |
+| `onlyServerTeams` | `false` (por defecto) aplica los flags a todos los chunks reclamados, cada equipo con sus propios valores. `true` los aplica solo a los equipos de servidor. |
 | `blockedSpawnTypes` | Tipos de aparición que bloquea `mob_spawning`. Por defecto `NATURAL`, `CHUNK_GENERATION`, `PATROL` y `REINFORCEMENT`; los spawners, huevos y comandos no se bloquean. |
 | `bypassPermissionLevel` | Nivel de permisos (0 a 4) a partir del cual un jugador se salta los flags que le limitan. 2 son los operadores; 5 lo desactiva. |
 

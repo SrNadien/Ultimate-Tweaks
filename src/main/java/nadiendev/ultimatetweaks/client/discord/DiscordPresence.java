@@ -1,7 +1,7 @@
 package nadiendev.ultimatetweaks.client.discord;
 
 import com.google.gson.JsonObject;
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import nadiendev.ultimatetweaks.config.TweaksClientConfig;
 import net.minecraft.SharedConstants;
 import net.minecraft.client.Minecraft;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public final class DiscordPresence {
 
-    private static final Logger LOGGER = UltimateTweaksCore.LOGGER;
+    private static final Logger LOGGER = UltimateTweaks.LOGGER;
 
     private static final long RETRY_MS = 10_000L;
     private static final long POLL_MS = 1_000L;

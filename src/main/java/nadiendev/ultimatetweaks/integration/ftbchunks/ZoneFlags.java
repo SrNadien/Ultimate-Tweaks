@@ -8,7 +8,7 @@ import dev.ftb.mods.ftbteams.api.property.IntProperty;
 import dev.ftb.mods.ftbteams.api.property.StringListProperty;
 import dev.ftb.mods.ftbteams.api.property.StringProperty;
 import dev.ftb.mods.ftbteams.api.property.TeamProperty;
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import nadiendev.ultimatetweaks.config.TweaksCommonConfig;
 import nadiendev.ultimatetweaks.zone.ZoneFlagDef;
 import net.minecraft.resources.ResourceLocation;
@@ -25,6 +25,16 @@ public final class ZoneFlags {
 
     private static final Map<ZoneFlagDef, TeamProperty<?>> PROPERTIES = new EnumMap<>(ZoneFlagDef.class);
 
+    private static final String LEGACY_GREETING = "&lEntrando al rancho de &b&l{team}";
+    private static final String LEGACY_FAREWELL = "&lSaliendo del rancho de &b&l{team}";
+    private static final String LEGACY_GREETING_TITLE = "&lEntrando al rancho de\\n&b&l{team}";
+    private static final String LEGACY_FAREWELL_TITLE = "&lSaliendo del rancho de\\n&b&l{team}";
+    private static final Map<ZoneFlagDef, Set<String>> LEGACY_TEXT_DEFAULTS = Map.of(
+            ZoneFlagDef.GREETING, Set.of(LEGACY_GREETING),
+            ZoneFlagDef.GREETING_TITLE, Set.of(LEGACY_GREETING, LEGACY_GREETING_TITLE),
+            ZoneFlagDef.FAREWELL, Set.of(LEGACY_FAREWELL),
+            ZoneFlagDef.FAREWELL_TITLE, Set.of(LEGACY_FAREWELL, LEGACY_FAREWELL_TITLE));
+
     static {
         for (ZoneFlagDef def : ZoneFlagDef.values()) {
             PROPERTIES.put(def, create(def));
@@ -36,7 +46,7 @@ public final class ZoneFlags {
 
     @SuppressWarnings("unchecked")
     private static TeamProperty<?> create(ZoneFlagDef def) {
-        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(UltimateTweaksCore.MOD_ID, def.path());
+        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(UltimateTweaks.MOD_ID, def.path());
         return switch (def.kind()) {
             case STATE -> new BooleanProperty(id, (Boolean) def.defaultValue());
             case TEXT -> new StringProperty(id, (String) def.defaultValue());
@@ -55,7 +65,14 @@ public final class ZoneFlags {
             enabledKeys = keys;
             enabledSource = configured;
         }
-        return enabledKeys.contains(def.key());
+        if (enabledKeys.contains(def.key())) {
+            return true;
+        }
+        return switch (def) {
+            case GREETING_TITLE -> enabledKeys.contains(ZoneFlagDef.GREETING.key());
+            case FAREWELL_TITLE -> enabledKeys.contains(ZoneFlagDef.FAREWELL.key());
+            default -> false;
+        };
     }
 
     public static void collect(TeamCollectPropertiesEvent event) {
@@ -88,6 +105,27 @@ public final class ZoneFlags {
         }
         String value = value(team, def);
         return value == null ? "" : value;
+    }
+
+    @SuppressWarnings("unchecked")
+    public static int migrateLegacyTexts(Team team) {
+        int changed = 0;
+        for (Map.Entry<ZoneFlagDef, Set<String>> entry : LEGACY_TEXT_DEFAULTS.entrySet()) {
+            ZoneFlagDef def = entry.getKey();
+            if (!enabled(def)) {
+                continue;
+            }
+            TeamProperty<String> property = (TeamProperty<String>) PROPERTIES.get(def);
+            String current = team.getProperty(property);
+            if (current != null && entry.getValue().contains(current)) {
+                team.setProperty(property, (String) def.defaultValue());
+                changed++;
+            }
+        }
+        if (changed > 0) {
+            team.markDirty();
+        }
+        return changed;
     }
 
     public static List<String> list(Team team, ZoneFlagDef def) {

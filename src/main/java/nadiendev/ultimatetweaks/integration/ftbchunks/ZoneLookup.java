@@ -27,17 +27,24 @@ public final class ZoneLookup {
     }
 
     @Nullable
-    public static Team zoneAt(@Nullable LevelAccessor accessor, BlockPos pos) {
+    public static Team claimTeamAt(@Nullable LevelAccessor accessor, BlockPos pos) {
         if (!TweaksCommonConfig.zoneEnabled() || !(accessor instanceof ServerLevel level)
                 || !FTBChunksAPI.api().isManagerLoaded()) {
             return null;
         }
         ClaimedChunk chunk = FTBChunksAPI.api().getManager().getChunk(new ChunkDimPos(level, pos));
-        if (chunk == null) {
-            return null;
-        }
-        Team team = chunk.getTeamData().getTeam();
-        if (TweaksCommonConfig.zoneOnlyServerTeams() && !team.isServerTeam()) {
+        return chunk == null ? null : chunk.getTeamData().getTeam();
+    }
+
+    @Nullable
+    public static Team claimTeamAt(Entity entity) {
+        return claimTeamAt(entity.level(), entity.blockPosition());
+    }
+
+    @Nullable
+    public static Team zoneAt(@Nullable LevelAccessor accessor, BlockPos pos) {
+        Team team = claimTeamAt(accessor, pos);
+        if (team != null && TweaksCommonConfig.zoneOnlyServerTeams() && !team.isServerTeam()) {
             return null;
         }
         return team;
@@ -98,8 +105,22 @@ public final class ZoneLookup {
     public static void notifyDenied(ServerPlayer player, Team team) {
         String message = ZoneFlags.text(team, ZoneFlagDef.DENY_MESSAGE);
         if (!message.isBlank()) {
-            player.displayClientMessage(legacy(message.replace("{team}", team.getName().getString())), true);
+            player.displayClientMessage(legacy(fill(message, team)), true);
         }
+    }
+
+    public static String fill(String text, Team team) {
+        return text.replace("{team}", team.getName().getString()).replace("{owner}", ownerName(team));
+    }
+
+    public static String ownerName(Team team) {
+        UUID owner = team.getOwner();
+        if (owner == null || !FTBTeamsAPI.api().isManagerLoaded()) {
+            return team.getName().getString();
+        }
+        return FTBTeamsAPI.api().getManager().getTeamByID(owner)
+                .map(ownerTeam -> ownerTeam.getName().getString())
+                .orElse(team.getName().getString());
     }
 
     public static Component legacy(String text) {

@@ -1,6 +1,6 @@
 package nadiendev.ultimatetweaks.datagen;
 
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import nadiendev.ultimatetweaks.datagen.providers.ItemsModelProvider;
 import nadiendev.ultimatetweaks.datagen.providers.ModAdvancementProvider;
 import nadiendev.ultimatetweaks.datagen.providers.ModJukeboxSongProvider;
@@ -30,7 +30,7 @@ public class DataGenerators {
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
-        UltimateTweaksCore.LOGGER.info("=== INICIANDO GENERACION DE DATOS ===");
+        UltimateTweaks.LOGGER.info("=== INICIANDO GENERACION DE DATOS ===");
 
         generator.addProvider(event.includeServer(), new ModRecipeProvider(output, lookupProvider));
         generator.addProvider(event.includeServer(),
@@ -44,6 +44,6 @@ public class DataGenerators {
             generator.addProvider(event.includeClient(), new ModLangProvider(output, locale));
         }
 
-        UltimateTweaksCore.LOGGER.info("=== TODOS LOS PROVIDERS REGISTRADOS CORRECTAMENTE ===");
+        UltimateTweaks.LOGGER.info("=== TODOS LOS PROVIDERS REGISTRADOS CORRECTAMENTE ===");
     }
 }

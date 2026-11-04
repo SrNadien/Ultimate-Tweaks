@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -69,11 +69,11 @@ public final class LootrStructureRules extends SimpleJsonResourceReloadListener 
             try {
                 loaded.add(parse(id, GsonHelper.convertToJsonObject(element, id.toString())));
             } catch (RuntimeException e) {
-                UltimateTweaksCore.LOGGER.error("Regla de Lootr {} invalida: {}", id, e.getMessage());
+                UltimateTweaks.LOGGER.error("Regla de Lootr {} invalida: {}", id, e.getMessage());
             }
         });
         rules = List.copyOf(loaded);
-        UltimateTweaksCore.LOGGER.info("Reglas de Lootr por estructura cargadas: {}", rules.size());
+        UltimateTweaks.LOGGER.info("Reglas de Lootr por estructura cargadas: {}", rules.size());
     }
 
     private static Rule parse(ResourceLocation id, JsonObject json) {

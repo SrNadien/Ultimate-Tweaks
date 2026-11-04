@@ -1,6 +1,6 @@
 package nadiendev.ultimatetweaks.integration.thaumaturge;
 
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import nadiendev.ultimatetweaks.config.TweaksCommonConfig;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
-@EventBusSubscriber(modid = UltimateTweaksCore.MOD_ID)
+@EventBusSubscriber(modid = UltimateTweaks.MOD_ID)
 public final class ThaumaturgeKnowledgeGuard {
 
     private static final String THAUMATURGE = "thaumaturge";

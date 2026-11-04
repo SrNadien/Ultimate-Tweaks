@@ -1,6 +1,6 @@
 package nadiendev.ultimatetweaks.integration.jei;
 
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;
@@ -28,7 +28,7 @@ public class JEICompat implements IModPlugin {
 
     @Override
     public ResourceLocation getPluginUid() {
-        return ResourceLocation.fromNamespaceAndPath(UltimateTweaksCore.MOD_ID, "jei_plugin");
+        return ResourceLocation.fromNamespaceAndPath(UltimateTweaks.MOD_ID, "jei_plugin");
     }
 
     @Override

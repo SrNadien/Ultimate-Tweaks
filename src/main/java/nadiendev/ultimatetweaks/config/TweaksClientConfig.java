@@ -37,6 +37,9 @@ public class TweaksClientConfig {
     public static final ModConfigSpec.ConfigValue<String> DISCORD_MANUAL_VERSION;
     public static final ModConfigSpec.ConfigValue<String> DISCORD_MANUAL_AUTHOR;
     public static final ModConfigSpec.ConfigValue<String> DISCORD_MANUAL_URL;
+    public static final ModConfigSpec.BooleanValue HEARTS_ENABLED;
+    public static final ModConfigSpec.IntValue HEARTS_THRESHOLD;
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> HEARTS_COLORS;
 
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
@@ -149,6 +152,26 @@ public class TweaksClientConfig {
                 .define("packUrl", "");
 
         builder.pop();
+        builder.pop();
+
+        builder.comment("Barra de vida con una sola fila de corazones.",
+                        "Con mas de 20 de vida maxima, en vez de apilar filas de corazones una encima de otra,",
+                        "se muestra una sola fila y cada capa de 20 de vida tiene su color.")
+               .push("hearts");
+
+        HEARTS_ENABLED = builder
+                .comment("false deja la barra de vida de vanilla.")
+                .define("enabled", true);
+
+        HEARTS_THRESHOLD = builder
+                .comment("Vida maxima a partir de la cual se usa la fila unica. Con menos o igual se ve la barra de vanilla.")
+                .defineInRange("threshold", 20, 1, 100000);
+
+        HEARTS_COLORS = builder
+                .comment("Color de cada capa de 20 de vida, en formato #RRGGBB. Al acabarse la lista vuelve a empezar.")
+                .defineListAllowEmpty("colors", List.of("#FF1313", "#A80F0F", "#FFC93C", "#77DD4F", "#12A33F",
+                        "#2AA3B8", "#6A1FC4", "#E040E8"), () -> "#FF1313", value -> value instanceof String);
+
         builder.pop();
 
         SPEC = builder.build();

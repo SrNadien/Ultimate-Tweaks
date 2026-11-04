@@ -1,6 +1,6 @@
 package nadiendev.ultimatetweaks.registry;
 
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -12,7 +12,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class CreativeTab {
 
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
-            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, UltimateTweaksCore.MOD_ID);
+            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, UltimateTweaks.MOD_ID);
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ULTIMATE_TWEAKS_TAB =
             CREATIVE_MODE_TABS.register("ultimate_tweaks_tab", () -> CreativeModeTab.builder()

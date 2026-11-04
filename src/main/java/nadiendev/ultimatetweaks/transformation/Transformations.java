@@ -1,6 +1,6 @@
 package nadiendev.ultimatetweaks.transformation;
 
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import nadiendev.ultimatetweaks.transformation.recipe.BlockExplosionRecipe;
 import nadiendev.ultimatetweaks.transformation.recipe.BurningRecipe;
 import nadiendev.ultimatetweaks.transformation.recipe.FluidToFluidRecipe;
@@ -22,9 +22,9 @@ public final class Transformations {
     public static final String KUBEJS = "kubejs";
 
     private static final DeferredRegister<RecipeType<?>> TYPES =
-            DeferredRegister.create(Registries.RECIPE_TYPE, UltimateTweaksCore.MOD_ID);
+            DeferredRegister.create(Registries.RECIPE_TYPE, UltimateTweaks.MOD_ID);
     private static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS =
-            DeferredRegister.create(Registries.RECIPE_SERIALIZER, UltimateTweaksCore.MOD_ID);
+            DeferredRegister.create(Registries.RECIPE_SERIALIZER, UltimateTweaks.MOD_ID);
 
     public static final DeferredHolder<RecipeType<?>, RecipeType<ItemInFluidRecipe>> ITEM_IN_FLUID = type("item_in_fluid");
     public static final DeferredHolder<RecipeType<?>, RecipeType<FluidToFluidRecipe>> FLUID_TO_FLUID = type("fluid_to_fluid");
@@ -55,7 +55,7 @@ public final class Transformations {
 
     private static <T extends Recipe<?>> DeferredHolder<RecipeType<?>, RecipeType<T>> type(String name) {
         return TYPES.register(name,
-                () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(UltimateTweaksCore.MOD_ID, name)));
+                () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(UltimateTweaks.MOD_ID, name)));
     }
 
     public static void register(IEventBus modEventBus) {

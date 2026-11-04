@@ -1,6 +1,6 @@
 package nadiendev.ultimatetweaks.trash;
 
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.MenuProvider;
@@ -10,7 +10,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 
 public final class TrashCan implements MenuProvider {
 
-    public static final String TITLE_KEY = "container." + UltimateTweaksCore.MOD_ID + ".trash_can";
+    public static final String TITLE_KEY = "container." + UltimateTweaks.MOD_ID + ".trash_can";
 
     private TrashCan() {
     }

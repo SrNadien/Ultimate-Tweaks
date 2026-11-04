@@ -1,6 +1,6 @@
 package nadiendev.ultimatetweaks.client.trash;
 
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import nadiendev.ultimatetweaks.config.TweaksClientConfig;
 import nadiendev.ultimatetweaks.trash.TrashCan;
 import nadiendev.ultimatetweaks.trash.TrashCanCommand;
@@ -19,7 +19,7 @@ import net.neoforged.fml.ModList;
 public final class TrashCanButton {
 
     private static final ResourceLocation TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(UltimateTweaksCore.MOD_ID, "textures/gui/trash_can_button.png");
+            ResourceLocation.fromNamespaceAndPath(UltimateTweaks.MOD_ID, "textures/gui/trash_can_button.png");
 
     private static final int SIZE = 18;
     private static final int X = 2;

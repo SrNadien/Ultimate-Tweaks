@@ -1,6 +1,6 @@
 package nadiendev.ultimatetweaks.worldgen;
 
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import nadiendev.ultimatetweaks.config.TweaksCommonConfig;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.packs.PackLocationInfo;
@@ -27,10 +27,10 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-@EventBusSubscriber(modid = UltimateTweaksCore.MOD_ID)
+@EventBusSubscriber(modid = UltimateTweaks.MOD_ID)
 public final class AstralStructurePack {
 
-    private static final String PACK_ID = "mod/" + UltimateTweaksCore.MOD_ID + ":astral_structures";
+    private static final String PACK_ID = "mod/" + UltimateTweaks.MOD_ID + ":astral_structures";
     private static final int DATA_PACK_FORMAT = 48;
 
     private AstralStructurePack() {
@@ -47,7 +47,7 @@ public final class AstralStructurePack {
             return;
         }
 
-        Path directory = FMLPaths.CONFIGDIR.get().resolve(UltimateTweaksCore.MOD_ID).resolve("astral_structures_pack");
+        Path directory = FMLPaths.CONFIGDIR.get().resolve(UltimateTweaks.MOD_ID).resolve("astral_structures_pack");
         Map<String, String> files = buildOverrides(astral);
 
         try {
@@ -57,7 +57,7 @@ public final class AstralStructurePack {
             }
             write(directory, files);
         } catch (IOException exception) {
-            UltimateTweaksCore.LOGGER.error("No se pudo escribir el pack de estructuras de Astral Sorcery", exception);
+            UltimateTweaks.LOGGER.error("No se pudo escribir el pack de estructuras de Astral Sorcery", exception);
             return;
         }
 
@@ -68,11 +68,11 @@ public final class AstralStructurePack {
                 PackType.SERVER_DATA,
                 new PackSelectionConfig(true, Pack.Position.TOP, false));
         if (pack == null) {
-            UltimateTweaksCore.LOGGER.error("El pack de estructuras de Astral Sorcery no tiene un pack.mcmeta valido");
+            UltimateTweaks.LOGGER.error("El pack de estructuras de Astral Sorcery no tiene un pack.mcmeta valido");
             return;
         }
 
-        UltimateTweaksCore.LOGGER.info("Ajustes de estructuras de Astral Sorcery aplicados: {}", files.keySet());
+        UltimateTweaks.LOGGER.info("Ajustes de estructuras de Astral Sorcery aplicados: {}", files.keySet());
         event.addRepositorySource(consumer -> consumer.accept(pack));
     }
 
@@ -91,11 +91,11 @@ public final class AstralStructurePack {
                     AstralStructureOverrides.structureSet(Files.readString(original, StandardCharsets.UTF_8), settings)
                             .ifPresent(json -> files.put(entry.structureSetPath(), json));
                 } catch (IOException | RuntimeException exception) {
-                    UltimateTweaksCore.LOGGER.warn("No se pudo leer {} de Astral Sorcery", entry.structureSetPath(),
+                    UltimateTweaks.LOGGER.warn("No se pudo leer {} de Astral Sorcery", entry.structureSetPath(),
                             exception);
                 }
             } else {
-                UltimateTweaksCore.LOGGER.warn("Esta version de Astral Sorcery no trae la estructura {}", entry.name());
+                UltimateTweaks.LOGGER.warn("Esta version de Astral Sorcery no trae la estructura {}", entry.name());
                 continue;
             }
 

@@ -1,6 +1,6 @@
 package nadiendev.ultimatetweaks.integration.jade;
 
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import net.minecraft.resources.ResourceLocation;
 import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaCommonRegistration;
@@ -21,6 +21,6 @@ public class JadeCompat implements IWailaPlugin {
     }
 
     public ResourceLocation getUid() {
-        return ResourceLocation.fromNamespaceAndPath(UltimateTweaksCore.MOD_ID, "jade_plugin");
+        return ResourceLocation.fromNamespaceAndPath(UltimateTweaks.MOD_ID, "jade_plugin");
     }
 }

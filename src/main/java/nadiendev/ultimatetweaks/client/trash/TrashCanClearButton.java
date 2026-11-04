@@ -1,6 +1,6 @@
 package nadiendev.ultimatetweaks.client.trash;
 
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import nadiendev.ultimatetweaks.trash.TrashCan;
 import nadiendev.ultimatetweaks.trash.TrashCanCommand;
 import net.minecraft.client.Minecraft;

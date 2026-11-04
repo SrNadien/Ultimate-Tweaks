@@ -1,6 +1,7 @@
 package nadiendev.ultimatetweaks.integration.ftbchunks;
 
 import dev.ftb.mods.ftbteams.api.Team;
+import nadiendev.ultimatetweaks.config.TweaksCommonConfig;
 import nadiendev.ultimatetweaks.zone.ZoneFlagDef;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -34,6 +35,8 @@ public final class ZoneMovementEvents {
     private static final class PlayerState {
         @Nullable
         private UUID zoneId;
+        @Nullable
+        private UUID messageZoneId;
         @Nullable
         private ResourceKey<Level> dimension;
         private long chunkKey = Long.MIN_VALUE;
@@ -70,6 +73,7 @@ public final class ZoneMovementEvents {
                 }
                 transition(player, state, current);
             }
+            announce(player, state, TweaksCommonConfig.zoneMessagesAllTeams() ? ZoneLookup.claimTeamAt(player) : current);
             state.chunkKey = chunkKey;
             state.dimension = dimension;
         }
@@ -106,7 +110,7 @@ public final class ZoneMovementEvents {
         Vec3 back = state.lastGood;
         player.server.execute(() -> player.teleportTo(player.serverLevel(), back.x, back.y, back.z, player.getYRot(), player.getXRot()));
         if (!message.isBlank()) {
-            player.displayClientMessage(ZoneLookup.legacy(message.replace("{team}", team.getName().getString())), true);
+            player.displayClientMessage(ZoneLookup.legacy(ZoneLookup.fill(message, team)), true);
         }
     }
 
@@ -123,8 +127,24 @@ public final class ZoneMovementEvents {
         }
     }
 
+    private void announce(ServerPlayer player, PlayerState state, @Nullable Team current) {
+        UUID currentId = current == null ? null : current.getId();
+        if (Objects.equals(currentId, state.messageZoneId)) {
+            return;
+        }
+        Team previous = state.messageZoneId == null ? null : ZoneLookup.teamById(state.messageZoneId);
+        state.messageZoneId = currentId;
+        if (previous != null) {
+            say(player, previous, ZoneFlags.text(previous, ZoneFlagDef.FAREWELL),
+                    ZoneFlags.text(previous, ZoneFlagDef.FAREWELL_TITLE));
+        }
+        if (current != null) {
+            say(player, current, ZoneFlags.text(current, ZoneFlagDef.GREETING),
+                    ZoneFlags.text(current, ZoneFlagDef.GREETING_TITLE));
+        }
+    }
+
     private void leave(ServerPlayer player, PlayerState state, Team team) {
-        say(player, team, ZoneFlags.text(team, ZoneFlagDef.FAREWELL), ZoneFlags.text(team, ZoneFlagDef.FAREWELL_TITLE));
         restoreGameMode(player, state);
         if (state.timeLocked) {
             state.timeLocked = false;
@@ -139,7 +159,6 @@ public final class ZoneMovementEvents {
     }
 
     private void enter(ServerPlayer player, PlayerState state, Team team) {
-        say(player, team, ZoneFlags.text(team, ZoneFlagDef.GREETING), ZoneFlags.text(team, ZoneFlagDef.GREETING_TITLE));
         GameType mode = parseGameMode(ZoneFlags.text(team, ZoneFlagDef.GAME_MODE));
         if (mode != null && player.gameMode.getGameModeForPlayer() != mode) {
             if (state.previousMode == null) {
@@ -180,20 +199,16 @@ public final class ZoneMovementEvents {
 
     private static void say(ServerPlayer player, Team team, String chat, String title) {
         if (!chat.isBlank()) {
-            player.sendSystemMessage(ZoneLookup.legacy(format(chat, team)));
+            player.sendSystemMessage(ZoneLookup.legacy(ZoneLookup.fill(chat, team)));
         }
         if (!title.isBlank()) {
-            String[] parts = format(title, team).split("\\\\n", 2);
+            String[] parts = ZoneLookup.fill(title, team).split("\\\\n", 2);
             player.connection.send(new ClientboundSetTitlesAnimationPacket(10, 60, 20));
             player.connection.send(new ClientboundSetTitleTextPacket(ZoneLookup.legacy(parts[0])));
             if (parts.length > 1) {
                 player.connection.send(new ClientboundSetSubtitleTextPacket(ZoneLookup.legacy(parts[1])));
             }
         }
-    }
-
-    private static String format(String text, Team team) {
-        return text.replace("{team}", team.getName().getString());
     }
 
     private void applyPeriodic(ServerPlayer player, PlayerState state, Team team) {
@@ -314,6 +329,7 @@ public final class ZoneMovementEvents {
         }
         if (state != null) {
             state.zoneId = null;
+            state.messageZoneId = null;
             state.chunkKey = Long.MIN_VALUE;
             state.lastGood = null;
             state.previousMode = null;

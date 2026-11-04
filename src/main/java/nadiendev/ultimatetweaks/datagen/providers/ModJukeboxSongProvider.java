@@ -1,7 +1,7 @@
 package nadiendev.ultimatetweaks.datagen.providers;
 
 import com.google.gson.JsonObject;
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import nadiendev.ultimatetweaks.registry.SonidosReproducibles;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.CachedOutput;
@@ -50,7 +50,7 @@ public class ModJukeboxSongProvider implements DataProvider {
     private CompletableFuture<?> saveJukeboxSong(CachedOutput cache, PackOutput.PathProvider pathProvider,
                                                    String name, String soundEvent, String descKey,
                                                    int lengthSeconds, int comparatorOutput) {
-        Path path = pathProvider.json(ResourceLocation.fromNamespaceAndPath(UltimateTweaksCore.MOD_ID, name));
+        Path path = pathProvider.json(ResourceLocation.fromNamespaceAndPath(UltimateTweaks.MOD_ID, name));
 
         JsonObject desc = new JsonObject();
         desc.addProperty("translate", descKey);

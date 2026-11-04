@@ -1,6 +1,6 @@
 package nadiendev.ultimatetweaks.client.trash;
 
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
@@ -12,14 +12,14 @@ import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 
-@EventBusSubscriber(modid = UltimateTweaksCore.MOD_ID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = UltimateTweaks.MOD_ID, value = Dist.CLIENT)
 public final class TrashCanSidebarPack {
 
     public static final String FTB_LIBRARY = "ftblibrary";
     public static final String FTB_ESSENTIALS = "ftbessentials";
 
     private static final ResourceLocation PACK =
-            ResourceLocation.fromNamespaceAndPath(UltimateTweaksCore.MOD_ID, "resourcepacks/trash_can_sidebar");
+            ResourceLocation.fromNamespaceAndPath(UltimateTweaks.MOD_ID, "resourcepacks/trash_can_sidebar");
 
     private TrashCanSidebarPack() {
     }

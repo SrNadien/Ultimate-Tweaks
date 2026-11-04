@@ -133,6 +133,10 @@ dependencies {
     compileOnly("dev.ftb.mods:ftb-chunks-neoforge:${ftb_chunks_version}") { transitive = false }
     compileOnly("dev.ftb.mods:ftb-quests-neoforge:${ftb_quests_version}") { transitive = false }
     compileOnly("noobanidus.mods.lootr:lootr-neoforge:${lootr_version}") { transitive = false }
+    runtimeOnly("dev.ftb.mods:ftb-library-neoforge:${ftb_library_version}") { transitive = false }
+    runtimeOnly("dev.ftb.mods:ftb-teams-neoforge:${ftb_teams_version}") { transitive = false }
+    runtimeOnly("dev.ftb.mods:ftb-chunks-neoforge:${ftb_chunks_version}") { transitive = false }
+    runtimeOnly("dev.architectury:architectury-neoforge:13.0.8") { transitive = false }
 
     switch (recipe_viewer) {
         case 'jei':

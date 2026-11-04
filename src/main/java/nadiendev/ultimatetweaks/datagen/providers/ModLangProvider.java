@@ -1,6 +1,6 @@
 package nadiendev.ultimatetweaks.datagen.providers;
 
-import nadiendev.ultimatetweaks.UltimateTweaksCore;
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import nadiendev.ultimatetweaks.zone.ZoneFlagDef;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
@@ -10,7 +10,7 @@ public class ModLangProvider extends LanguageProvider {
     private final boolean spanish;
 
     public ModLangProvider(PackOutput output, String locale) {
-        super(output, UltimateTweaksCore.MOD_ID, locale);
+        super(output, UltimateTweaks.MOD_ID, locale);
         this.spanish = locale.startsWith("es_");
     }
 

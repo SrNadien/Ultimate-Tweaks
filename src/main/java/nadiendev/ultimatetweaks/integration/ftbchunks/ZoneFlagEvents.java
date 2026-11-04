@@ -13,5 +13,6 @@ public final class ZoneFlagEvents {
         NeoForge.EVENT_BUS.register(new ZoneProtectionEvents());
         NeoForge.EVENT_BUS.register(new ZoneDamageEvents());
         NeoForge.EVENT_BUS.register(new ZoneMovementEvents());
+        NeoForge.EVENT_BUS.register(new ZoneMigration());
     }
 }
