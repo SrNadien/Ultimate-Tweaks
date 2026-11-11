@@ -1,8 +1,10 @@
 package nadiendev.ultimatetweaks.config;
 
+import nadiendev.ultimatetweaks.UltimateTweaks;
 import nadiendev.ultimatetweaks.worldgen.AstralStructureOverrides;
 import nadiendev.ultimatetweaks.worldgen.AstralStructures;
 import nadiendev.ultimatetweaks.zone.ZoneFlagDef;
+import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 import java.util.Arrays;
@@ -30,6 +32,9 @@ public class TweaksCommonConfig {
     private static final ModConfigSpec.BooleanValue THAUMATURGE_GUARD;
     private static final ModConfigSpec.IntValue THAUMATURGE_RESYNC_DELAY;
     private static final ModConfigSpec.IntValue THAUMATURGE_SAVE_INTERVAL;
+    private static final ModConfigSpec.IntValue THAUMATURGE_CONFIG_VERSION;
+
+    private static final int THAUMATURGE_CONFIG_VERSION_CURRENT = 1;
 
     private static final ModConfigSpec.BooleanValue ZONE_ENABLED;
     private static final ModConfigSpec.BooleanValue ZONE_ONLY_SERVER_TEAMS;
@@ -90,16 +95,23 @@ public class TweaksCommonConfig {
                .push("thaumaturge");
 
         THAUMATURGE_GUARD = builder
-                .comment("true reenvia los conocimientos al cliente al entrar, reaparecer y cambiar de dimension.")
-                .define("enabled", true);
+                .comment("true reenvia los conocimientos al cliente al entrar, reaparecer y cambiar de dimension.",
+                         "Desactivado por defecto.")
+                .define("enabled", false);
         THAUMATURGE_RESYNC_DELAY = builder
                 .comment("Ticks que se esperan tras entrar para volver a enviar los conocimientos, cuando el cliente",
-                         "ya ha terminado de cargar el mundo.")
-                .defineInRange("resyncDelayTicks", 40, 1, 1200);
+                         "ya ha terminado de cargar el mundo. 0 lo desactiva y deja solo el reenvio inmediato.",
+                         "Desactivado por defecto.")
+                .defineInRange("resyncDelayTicks", 0, 0, 1200);
         THAUMATURGE_SAVE_INTERVAL = builder
                 .comment("Cada cuantos ticks se guardan en disco los datos de todos los jugadores, para no perder",
-                         "conocimientos si el servidor se cierra de golpe. 0 lo desactiva y deja solo el guardado de Minecraft.")
-                .defineInRange("saveIntervalTicks", 1200, 0, 72000);
+                         "conocimientos si el servidor se cierra de golpe. 0 lo desactiva y deja solo el guardado de Minecraft.",
+                         "Desactivado por defecto.")
+                .defineInRange("saveIntervalTicks", 0, 0, 72000);
+        THAUMATURGE_CONFIG_VERSION = builder
+                .comment("No editar. Lo usa el mod para poner esta seccion en sus valores por defecto una vez",
+                         "al actualizar a una version que los cambia.")
+                .defineInRange("configVersion", 0, 0, 1000);
 
         builder.pop();
 
@@ -211,6 +223,21 @@ public class TweaksCommonConfig {
     public static AstralStructureOverrides.Settings astralStructure(String name) {
         StructureValues values = ASTRAL_STRUCTURES.get(name);
         return values == null ? AstralStructureOverrides.Settings.DEFAULT : values.read();
+    }
+
+    public static void migrate(ModConfigEvent.Loading event) {
+        if (event.getConfig().getSpec() != SPEC) {
+            return;
+        }
+        if (THAUMATURGE_CONFIG_VERSION.get() >= THAUMATURGE_CONFIG_VERSION_CURRENT) {
+            return;
+        }
+        THAUMATURGE_GUARD.set(THAUMATURGE_GUARD.getDefault());
+        THAUMATURGE_RESYNC_DELAY.set(THAUMATURGE_RESYNC_DELAY.getDefault());
+        THAUMATURGE_SAVE_INTERVAL.set(THAUMATURGE_SAVE_INTERVAL.getDefault());
+        THAUMATURGE_CONFIG_VERSION.set(THAUMATURGE_CONFIG_VERSION_CURRENT);
+        SPEC.save();
+        UltimateTweaks.LOGGER.info("Config: la seccion thaumaturge pasa a los valores por defecto actuales");
     }
 
     public static boolean thaumaturgeGuardEnabled() {

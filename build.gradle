@@ -160,6 +160,9 @@ dependencies {
 
     //jade
     implementation "curse.maven:jade-324717:${jade_version}"
+    runtimeOnly "curse.maven:thaumaturge-1628024:${thaumaturge_version_id}"
+    runtimeOnly "top.theillusivec4.curios:curios-neoforge:9.5.1+1.21.1"
+    runtimeOnly "maven.modrinth:lithostitched:1.8.1-neoforge-21.1"
 
     // Ultimate Armoury declara geckolib, patchouli y appleskin como obligatorios: se necesitan
     // en el runtime de dev para que cargue, Tweaks no los usa en su codigo ni en su toml.

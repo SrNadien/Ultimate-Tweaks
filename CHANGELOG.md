@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.0.20] — 2026-11-11 — Minecraft 1.21.1
+
+### 🔧 Changed
+- The Thaumaturge protection options are now off by default: `enabled`, `resyncDelayTicks` and `saveIntervalTicks` in the `thaumaturge` section of the common config. Config files from earlier versions are moved to these values once, automatically, the first time they load, and left as you set them from then on.
+- `resyncDelayTicks` now accepts 0, which turns off the second resend of the knowledge after joining.
+
 ## [2.0.19] — 2026-11-04 — Minecraft 1.21.1
 
 ### ✨ Added

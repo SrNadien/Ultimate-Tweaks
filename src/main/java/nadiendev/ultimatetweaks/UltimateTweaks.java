@@ -37,6 +37,7 @@ public class UltimateTweaks {
         LootrIntegration.init();
 
         modEventBus.addListener(DataGenerators::gatherData);
+        modEventBus.addListener(TweaksCommonConfig::migrate);
 
         LOGGER.info("Ultimate Tweaks inicializado correctamente!");
     }

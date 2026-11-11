@@ -42,7 +42,10 @@ public final class ThaumaturgeKnowledgeGuard {
     }
 
     private static void schedule(ServerPlayer player) {
-        PENDING.put(player.getUUID(), TweaksCommonConfig.thaumaturgeResyncDelayTicks());
+        int delay = TweaksCommonConfig.thaumaturgeResyncDelayTicks();
+        if (delay > 0) {
+            PENDING.put(player.getUUID(), delay);
+        }
     }
 
     @SubscribeEvent
