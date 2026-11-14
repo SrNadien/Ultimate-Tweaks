@@ -42,6 +42,29 @@ public class CreativeTab {
                         output.accept(ItemsAdds.TRANSMISOR.get());
                         output.accept(ItemsAdds.DISC_MCCACAO.get());
                         output.accept(ItemsAdds.DISC_AVENGERS.get());
+                        output.accept(ItemsAdds.PRINTED_PROGNOSIS_CIRCUIT.get());
+                        output.accept(ItemsAdds.PRINTED_PROTOCOL_CIRCUIT.get());
+                        output.accept(ItemsAdds.PRINTED_CHRONO_CIRCUIT.get());
+                        output.accept(ItemsAdds.PRINTED_AUTHORITY_CIRCUIT.get());
+                        output.accept(ItemsAdds.PRINTED_EXECUTION_CIRCUIT.get());
+                        output.accept(ItemsAdds.PROGNOSIS_PROCESSOR.get());
+                        output.accept(ItemsAdds.PROTOCOL_PROCESSOR.get());
+                        output.accept(ItemsAdds.CHRONO_PROCESSOR.get());
+                        output.accept(ItemsAdds.AUTHORITY_PROCESSOR.get());
+                        output.accept(ItemsAdds.EXECUTION_PROCESSOR.get());
+                        output.accept(ItemsAdds.STELLAR_ALLOY.get());
+                        output.accept(ItemsAdds.CRYSTAL_CLUSTER.get());
+                        output.accept(ItemsAdds.ENERGIZED_CRYSTAL_CLUSTER.get());
+                        output.accept(ItemsAdds.AURELIAN_CRYSTAL.get());
+                        output.accept(ItemsAdds.ENERGIZED_AURELIAN_CRYSTAL.get());
+                        output.accept(ItemsAdds.ZINC_CLAW.get());
+                        output.accept(ItemsAdds.BRASS_CLAW.get());
+                        output.accept(ItemsAdds.ANDESITE_CLAW.get());
+                        for (MaterialItems.Material material : MaterialItems.MATERIALS) {
+                            for (MaterialItems.Kind kind : MaterialItems.Kind.values()) {
+                                output.accept(MaterialItems.holder(material, kind).get());
+                            }
+                        }
                     })
                     .build()
             );

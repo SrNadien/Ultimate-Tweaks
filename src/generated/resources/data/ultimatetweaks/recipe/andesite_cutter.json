@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "ultimatetweaks:materials/andesite_alloy"
+    },
+    "B": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "A A",
+    " B ",
+    "B B"
+  ],
+  "result": {
+    "count": 1,
+    "id": "ultimatetweaks:andesite_cutter"
+  }
+}

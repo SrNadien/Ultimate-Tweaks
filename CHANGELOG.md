@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.21] — 2026-11-14 — Minecraft 1.21.1
+
+### ✨ Added
+- **18 new items**, with their own textures: printed circuits and processors in the modern AE2 look (Prognosis, Protocol, Chrono, Authority and Execution), Stellar Alloy, Crystal Cluster and Energized Crystal Cluster, Aurelian Crystal and Energized Aurelian Crystal, and the Zinc, Brass and Andesite Claws.
+- **Crafting materials** for ten materials (copper, iron, gold, emerald, netherite, amethyst, obsidian, crying obsidian, andesite alloy and chocolate): plate, stick, gear, wire, hammer and wire cutter, 60 items in all. A hammer above the material makes a plate, a hammer above two materials makes sticks, four materials around a hammer make a gear, and a wire cutter above a plate makes wire. Plates, sticks, gears and wire give 4 each. Hammers and wire cutters have durability and lose 1 each time they are used in a recipe.
+- **Item tags** for other mods: `c:plates`, `c:rods`, `c:gears`, `c:wires`, `c:tools/hammers`, `c:tools/cutters`, and one per material (`c:plates/copper`, `c:gears/iron`...), plus `ultimatetweaks:hammers` and `ultimatetweaks:cutters`.
+- The andesite and chocolate recipes accept Create's andesite alloy and chocolate bar when Create is installed.
+
 ## [2.0.20] — 2026-11-11 — Minecraft 1.21.1
 
 ### 🔧 Changed

@@ -1,6 +1,7 @@
 package nadiendev.ultimatetweaks.datagen.providers;
 
 import nadiendev.ultimatetweaks.UltimateTweaks;
+import nadiendev.ultimatetweaks.registry.MaterialItems;
 import nadiendev.ultimatetweaks.zone.ZoneFlagDef;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
@@ -65,6 +66,25 @@ public class ModLangProvider extends LanguageProvider {
         add("item.ultimatetweaks.transmisor", "Transmitter");
         add("item.ultimatetweaks.disc_mccacao", "Music Disc - Happy Meal");
         add("item.ultimatetweaks.disc_avengers", "Music Disc - Avengers");
+        add("item.ultimatetweaks.printed_prognosis_circuit", "Printed Prognosis Circuit");
+        add("item.ultimatetweaks.printed_protocol_circuit", "Printed Protocol Circuit");
+        add("item.ultimatetweaks.printed_chrono_circuit", "Printed Chrono Circuit");
+        add("item.ultimatetweaks.printed_authority_circuit", "Printed Authority Circuit");
+        add("item.ultimatetweaks.printed_execution_circuit", "Printed Execution Circuit");
+        add("item.ultimatetweaks.prognosis_processor", "Prognosis Processor");
+        add("item.ultimatetweaks.protocol_processor", "Protocol Processor");
+        add("item.ultimatetweaks.chrono_processor", "Chrono Processor");
+        add("item.ultimatetweaks.authority_processor", "Authority Processor");
+        add("item.ultimatetweaks.execution_processor", "Execution Processor");
+        add("item.ultimatetweaks.stellar_alloy", "Stellar Alloy");
+        add("item.ultimatetweaks.crystal_cluster", "Crystal Cluster");
+        add("item.ultimatetweaks.energized_crystal_cluster", "Energized Crystal Cluster");
+        add("item.ultimatetweaks.aurelian_crystal", "Aurelian Crystal");
+        add("item.ultimatetweaks.energized_aurelian_crystal", "Energized Aurelian Crystal");
+        add("item.ultimatetweaks.zinc_claw", "Zinc Claw");
+        add("item.ultimatetweaks.brass_claw", "Brass Claw");
+        add("item.ultimatetweaks.andesite_claw", "Andesite Claw");
+        materialTranslations(false);
         add("sound_event.ultimatetweaks.cajitafeli", "Happy Meal Sound");
         add("sound_event.ultimatetweaks.cajitafelizmccaco", "Happy Meal Sound");
         add("sound_event.ultimatetweaks.galaxysound", "Galactic Sound");
@@ -120,6 +140,25 @@ public class ModLangProvider extends LanguageProvider {
         add("item.ultimatetweaks.transmisor", "Transmisor");
         add("item.ultimatetweaks.disc_mccacao", "Disco de M\u00fasica - La cajita Feliz");
         add("item.ultimatetweaks.disc_avengers", "Disco de M\u00fasica - Vengadores");
+        add("item.ultimatetweaks.printed_prognosis_circuit", "Circuito de Pron\u00f3stico Impreso");
+        add("item.ultimatetweaks.printed_protocol_circuit", "Circuito de Protocolo Impreso");
+        add("item.ultimatetweaks.printed_chrono_circuit", "Circuito Crono Impreso");
+        add("item.ultimatetweaks.printed_authority_circuit", "Circuito de Autoridad Impreso");
+        add("item.ultimatetweaks.printed_execution_circuit", "Circuito de Ejecuci\u00f3n Impreso");
+        add("item.ultimatetweaks.prognosis_processor", "Procesador de Pron\u00f3stico");
+        add("item.ultimatetweaks.protocol_processor", "Procesador de Protocolo");
+        add("item.ultimatetweaks.chrono_processor", "Procesador Crono");
+        add("item.ultimatetweaks.authority_processor", "Procesador de Autoridad");
+        add("item.ultimatetweaks.execution_processor", "Procesador de Ejecuci\u00f3n");
+        add("item.ultimatetweaks.stellar_alloy", "Aleaci\u00f3n Estelar");
+        add("item.ultimatetweaks.crystal_cluster", "Racimo de Cristal");
+        add("item.ultimatetweaks.energized_crystal_cluster", "Racimo de Cristal Energizado");
+        add("item.ultimatetweaks.aurelian_crystal", "Cristal Aureliano");
+        add("item.ultimatetweaks.energized_aurelian_crystal", "Cristal Aureliano Energizado");
+        add("item.ultimatetweaks.zinc_claw", "Garra de Zinc");
+        add("item.ultimatetweaks.brass_claw", "Garra de Latón");
+        add("item.ultimatetweaks.andesite_claw", "Garra de Andesita");
+        materialTranslations(true);
         add("sound_event.ultimatetweaks.cajitafeli", "Sonido de Cajita Feliz");
         add("sound_event.ultimatetweaks.cajitafelizmccaco", "Sonido de Cajita Feliz");
         add("sound_event.ultimatetweaks.galaxysound", "Sonido Gal\u00e1ctico");
@@ -131,6 +170,16 @@ public class ModLangProvider extends LanguageProvider {
         add("advancements.ultimatetweaks.install_mod.description", "Bienvenido a Ultimate Tweaks. Ya es tarde para arrepentirse.");
         add("advancements.ultimatetweaks.eresunviciado.title", "Eres Un Viciado");
         add("advancements.ultimatetweaks.eresunviciado.description", "Conseguiste la Galactic Star. Tienes demasiado tiempo libre.");
+    }
+
+    private void materialTranslations(boolean spanishText) {
+        for (MaterialItems.Material material : MaterialItems.MATERIALS) {
+            for (MaterialItems.Kind kind : MaterialItems.Kind.values()) {
+                String pattern = spanishText ? kind.spanish() : kind.english();
+                String name = spanishText ? material.spanish() : material.english();
+                addItem(MaterialItems.holder(material, kind), String.format(pattern, name));
+            }
+        }
     }
 
     private void zoneFlagTranslations(boolean spanishText) {

@@ -222,11 +222,33 @@ public static final DeferredHolder<Item, Item> DISC_AVENGERS = ITEMS.register(
             .rarity(Rarity.RARE))
 );
 
+    public static final DeferredHolder<Item, Item> PRINTED_PROGNOSIS_CIRCUIT = registerItem("printed_prognosis_circuit");
+    public static final DeferredHolder<Item, Item> PRINTED_PROTOCOL_CIRCUIT = registerItem("printed_protocol_circuit");
+    public static final DeferredHolder<Item, Item> PRINTED_CHRONO_CIRCUIT = registerItem("printed_chrono_circuit");
+    public static final DeferredHolder<Item, Item> PRINTED_AUTHORITY_CIRCUIT = registerItem("printed_authority_circuit");
+    public static final DeferredHolder<Item, Item> PRINTED_EXECUTION_CIRCUIT = registerItem("printed_execution_circuit");
+
+    public static final DeferredHolder<Item, Item> PROGNOSIS_PROCESSOR = registerItem("prognosis_processor");
+    public static final DeferredHolder<Item, Item> PROTOCOL_PROCESSOR = registerItem("protocol_processor");
+    public static final DeferredHolder<Item, Item> CHRONO_PROCESSOR = registerItem("chrono_processor");
+    public static final DeferredHolder<Item, Item> AUTHORITY_PROCESSOR = registerItem("authority_processor");
+    public static final DeferredHolder<Item, Item> EXECUTION_PROCESSOR = registerItem("execution_processor");
+
+    public static final DeferredHolder<Item, Item> STELLAR_ALLOY = registerItem("stellar_alloy");
+    public static final DeferredHolder<Item, Item> CRYSTAL_CLUSTER = registerItem("crystal_cluster");
+    public static final DeferredHolder<Item, Item> ENERGIZED_CRYSTAL_CLUSTER = registerItem("energized_crystal_cluster");
+    public static final DeferredHolder<Item, Item> AURELIAN_CRYSTAL = registerItem("aurelian_crystal");
+    public static final DeferredHolder<Item, Item> ENERGIZED_AURELIAN_CRYSTAL = registerItem("energized_aurelian_crystal");
+    public static final DeferredHolder<Item, Item> ZINC_CLAW = registerItem("zinc_claw");
+    public static final DeferredHolder<Item, Item> BRASS_CLAW = registerItem("brass_claw");
+    public static final DeferredHolder<Item, Item> ANDESITE_CLAW = registerItem("andesite_claw");
+
     public static DeferredHolder<Item, Item> registerItem(String name) {
         return ITEMS.register(name, () -> new Item(new Item.Properties()));
     }
 
     public static void register(IEventBus eventBus) {
+        MaterialItems.init();
         ITEMS.register(eventBus);
     }
 }

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "ultimatetweaks:materials/chocolate"
+    },
+    "B": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "A A",
+    " B ",
+    "B B"
+  ],
+  "result": {
+    "count": 1,
+    "id": "ultimatetweaks:chocolate_cutter"
+  }
+}

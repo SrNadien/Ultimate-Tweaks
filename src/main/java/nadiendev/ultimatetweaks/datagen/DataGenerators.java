@@ -3,6 +3,7 @@ package nadiendev.ultimatetweaks.datagen;
 import nadiendev.ultimatetweaks.UltimateTweaks;
 import nadiendev.ultimatetweaks.datagen.providers.ItemsModelProvider;
 import nadiendev.ultimatetweaks.datagen.providers.ModAdvancementProvider;
+import nadiendev.ultimatetweaks.datagen.providers.ModItemTagProvider;
 import nadiendev.ultimatetweaks.datagen.providers.ModJukeboxSongProvider;
 import nadiendev.ultimatetweaks.datagen.providers.ModLangProvider;
 import nadiendev.ultimatetweaks.datagen.providers.ModRecipeProvider;
@@ -37,6 +38,7 @@ public class DataGenerators {
                 new AdvancementProvider(output, lookupProvider, existingFileHelper,
                         List.of(new ModAdvancementProvider())));
         generator.addProvider(event.includeServer(), new ModJukeboxSongProvider(output, lookupProvider));
+        generator.addProvider(event.includeServer(), new ModItemTagProvider(output, lookupProvider, existingFileHelper));
 
         generator.addProvider(event.includeClient(), new ItemsModelProvider(output, existingFileHelper));
         generator.addProvider(event.includeClient(), new ModSoundProvider(output, existingFileHelper));
