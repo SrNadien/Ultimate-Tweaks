@@ -218,6 +218,28 @@ public class ItemsAdds {
                 .rarity(Rarity.RARE))
     );
 
+    public static final DeferredHolder<Item, Item> PRINTED_PROGNOSIS_CIRCUIT = ITEMS.registerItem("printed_prognosis_circuit", Item::new);
+    public static final DeferredHolder<Item, Item> PRINTED_PROTOCOL_CIRCUIT = ITEMS.registerItem("printed_protocol_circuit", Item::new);
+    public static final DeferredHolder<Item, Item> PRINTED_CHRONO_CIRCUIT = ITEMS.registerItem("printed_chrono_circuit", Item::new);
+    public static final DeferredHolder<Item, Item> PRINTED_AUTHORITY_CIRCUIT = ITEMS.registerItem("printed_authority_circuit", Item::new);
+    public static final DeferredHolder<Item, Item> PRINTED_EXECUTION_CIRCUIT = ITEMS.registerItem("printed_execution_circuit", Item::new);
+
+    public static final DeferredHolder<Item, Item> PROGNOSIS_PROCESSOR = ITEMS.registerItem("prognosis_processor", Item::new);
+    public static final DeferredHolder<Item, Item> PROTOCOL_PROCESSOR = ITEMS.registerItem("protocol_processor", Item::new);
+    public static final DeferredHolder<Item, Item> CHRONO_PROCESSOR = ITEMS.registerItem("chrono_processor", Item::new);
+    public static final DeferredHolder<Item, Item> AUTHORITY_PROCESSOR = ITEMS.registerItem("authority_processor", Item::new);
+    public static final DeferredHolder<Item, Item> EXECUTION_PROCESSOR = ITEMS.registerItem("execution_processor", Item::new);
+
+    public static final DeferredHolder<Item, Item> STELLAR_ALLOY = ITEMS.registerItem("stellar_alloy", Item::new);
+    public static final DeferredHolder<Item, Item> CRYSTAL_CLUSTER = ITEMS.registerItem("crystal_cluster", Item::new);
+    public static final DeferredHolder<Item, Item> ENERGIZED_CRYSTAL_CLUSTER = ITEMS.registerItem("energized_crystal_cluster", Item::new);
+    public static final DeferredHolder<Item, Item> AURELIAN_CRYSTAL = ITEMS.registerItem("aurelian_crystal", Item::new);
+    public static final DeferredHolder<Item, Item> ENERGIZED_AURELIAN_CRYSTAL = ITEMS.registerItem("energized_aurelian_crystal", Item::new);
+
+    public static final DeferredHolder<Item, Item> ZINC_CLAW = ITEMS.registerItem("zinc_claw", Item::new);
+    public static final DeferredHolder<Item, Item> BRASS_CLAW = ITEMS.registerItem("brass_claw", Item::new);
+    public static final DeferredHolder<Item, Item> ANDESITE_CLAW = ITEMS.registerItem("andesite_claw", Item::new);
+
     private static final ThreadLocal<Item.Properties> CURRENT_PROPERTIES = new ThreadLocal<>();
 
     private static Item.Properties props() {
@@ -237,6 +259,7 @@ public class ItemsAdds {
     }
 
     public static void register(IEventBus eventBus) {
+        MaterialItems.init();
         ITEMS.register(eventBus);
     }
 }

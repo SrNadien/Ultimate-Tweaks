@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": "#ultimatetweaks:cutters",
+    "b": "#c:plates/emerald"
+  },
+  "pattern": [
+    "a  ",
+    "b  ",
+    "   "
+  ],
+  "result": {
+    "count": 4,
+    "id": "ultimatetweaks:emerald_wire"
+  }
+}

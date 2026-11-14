@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": "#ultimatetweaks:cutters",
+    "b": "#c:plates/crying_obsidian"
+  },
+  "pattern": [
+    "a  ",
+    "b  ",
+    "   "
+  ],
+  "result": {
+    "count": 4,
+    "id": "ultimatetweaks:crying_obsidian_wire"
+  }
+}

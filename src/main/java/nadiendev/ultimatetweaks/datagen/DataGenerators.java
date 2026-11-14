@@ -2,6 +2,7 @@ package nadiendev.ultimatetweaks.datagen;
 
 import nadiendev.ultimatetweaks.UltimateTweaks;
 import nadiendev.ultimatetweaks.datagen.providers.ModAdvancementProvider;
+import nadiendev.ultimatetweaks.datagen.providers.ModItemTagProvider;
 import nadiendev.ultimatetweaks.datagen.providers.ModJukeboxSongProvider;
 import nadiendev.ultimatetweaks.datagen.providers.ModLangProvider;
 import nadiendev.ultimatetweaks.datagen.providers.ModRecipeProvider;
@@ -32,6 +33,7 @@ public class DataGenerators {
         event.createProvider((output, lookupProvider) ->
                 new AdvancementProvider(output, lookupProvider, List.of(new ModAdvancementProvider())));
         event.createProvider(ModJukeboxSongProvider::new);
+        event.createProvider(ModItemTagProvider::new);
 
         UltimateTweaks.LOGGER.info("=== TODOS LOS PROVIDERS REGISTRADOS CORRECTAMENTE ===");
     }

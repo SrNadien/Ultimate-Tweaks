@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": "#ultimatetweaks:hammers",
+    "b": "minecraft:netherite_ingot"
+  },
+  "pattern": [
+    "a  ",
+    "b  ",
+    "   "
+  ],
+  "result": {
+    "count": 4,
+    "id": "ultimatetweaks:netherite_plate"
+  }
+}

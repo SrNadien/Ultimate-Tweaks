@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": "#ultimatetweaks:materials/chocolate",
+    "B": "minecraft:stick"
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    " B "
+  ],
+  "result": {
+    "id": "ultimatetweaks:chocolate_hammer"
+  }
+}
